@@ -35,20 +35,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     //Action Buttons
     @IBAction func startReading(_ sender: UIButton) {
+        if synthesizer.isPaused {
+        
+        synthesizer.continueSpeaking()
+        
+        } else {
         for speechIndex in myRecipeArray {
             print(speechIndex)
         callSpeechSynthesizer(step: speechIndex)
-            
         }
-        
+        }
     }
 
+    @IBAction func pauseReading(_ sender: UIButton) {
+        synthesizer.pauseSpeaking(at: AVSpeechBoundary.word)
+        
+    }
     
     @IBAction func stopReading(_ sender: UIButton) {
-        if synthesizer.stopSpeaking(at: AVSpeechBoundary.word) {
-        print("stopped Speaking")
-        }
-    }
+        
+        synthesizer.stopSpeaking(at: AVSpeechBoundary.word)     }
     
     //Speech Synthesizer
     func callSpeechSynthesizer(step: String) {
