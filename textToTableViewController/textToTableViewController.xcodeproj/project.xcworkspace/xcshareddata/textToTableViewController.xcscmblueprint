@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "23A9B7264B163C6590A164CC533BF416B3ED9CED",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "62B21867C1838C3071E77C94978E87AAEA2C83A0" : 9223372036854775807,
+    "23A9B7264B163C6590A164CC533BF416B3ED9CED" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0ECD1705-E7B1-48E9-8B6E-39E745DB002A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "62B21867C1838C3071E77C94978E87AAEA2C83A0" : "OpenEarsDemo%202\/",
+    "23A9B7264B163C6590A164CC533BF416B3ED9CED" : "TextToSpeech\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "textToTableViewController",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "textToTableViewController\/textToTableViewController.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/priyax\/TextToSpeech.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "23A9B7264B163C6590A164CC533BF416B3ED9CED"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/priyax\/OpenEarsDemo.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "62B21867C1838C3071E77C94978E87AAEA2C83A0"
+    }
+  ]
+}
