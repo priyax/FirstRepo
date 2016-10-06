@@ -21,15 +21,42 @@ class SavedRecipesController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+//Alert view to navigate to website or manual input of recipe
+    
+    @IBAction func addRecipe(_ sender: UIButton) {
+        
+        //
+        // UIAlertController - Action Sheet
+        //
+        // https://developer.apple.com/ios/human-interface-guidelines/ui-views/action-sheets/
+        //
+        
+        let alertController = UIAlertController(title: nil,
+                                                message: "Get your recipe on the clipboard",
+                                                preferredStyle: .actionSheet)
+        
+        let extractFromWeb = UIAlertAction(title: "Recipe from Web", style: .default) { action in
+            print("Save was selected!")
+        }
+        
+        alertController.addAction(extractFromWeb)
+        
+        let manualEntry = UIAlertAction(title: "Recipe from typing", style: .destructive) { action in
+            print("Discard was selected!")
+        }
+        
+        alertController.addAction(manualEntry)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+            print("Cancel was selected!")
+        }
+        
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true) {
+            print("Show the Action Sheet!")
+        }
     }
-    */
+
 
 }
