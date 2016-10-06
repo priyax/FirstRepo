@@ -12,10 +12,23 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let APP_ID = "CA70AB01-FC31-9E28-FFAC-025AA0445600"
+    let SECRET_KEY = "89555DE6-8505-58D6-FFA8-B95276FFB200"
+    let backendless = Backendless.sharedInstance()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+//        if APP_ID != "<replace-with-your-app-id>" && SECRET_KEY != "<replace-with-your-secret-key>" {
+//            
+//            backendless?.initApp(APP_ID, secret:SECRET_KEY, version:VERSION_NUM)
+//            
+//            let settings = UIUserNotificationSettings(types:[.alert, .sound, .badge], categories: nil)
+//            UIApplication.shared.registerUserNotificationSettings(settings)
+//            
+//            backendless?.messaging.registerForRemoteNotifications()
+//        }
+        
         return true
     }
 
