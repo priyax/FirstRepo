@@ -190,7 +190,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="73"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N1e-kZ-R4H" id="RSv-Fx-Da4">
-                                            <frame key="frameInset" width="375" height="72"/>
+                                            <frame key="frameInset" width="375" height="73"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0mY-Gq-aAW" userLabel="Recipe Pic">
@@ -244,7 +244,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="1k4-yv-bw7" kind="presentation" identifier="gotoExtractRecipe" id="aLH-9B-rqq"/>
+                        <segue destination="1k4-yv-bw7" kind="show" identifier="gotoExtractRecipe" id="aLH-9B-rqq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7gc-Gn-bda" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -254,7 +254,6 @@
         <!--Extract Recipe-->
         <scene sceneID="kAd-7k-Ya8">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Mes-cw-f5P" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="1k4-yv-bw7" customClass="ExtractRecipe" customModule="textToTableViewController" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ua4-93-Hey"/>
@@ -273,6 +272,7 @@
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7jR-HQ-ziZ">
                                                 <rect key="frame" x="16" y="7" width="83" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="&lt;"/>
                                                 <connections>
                                                     <action selector="backBtn:" destination="1k4-yv-bw7" eventType="touchUpInside" id="Xqa-7k-q6K"/>
@@ -330,9 +330,10 @@
                     </view>
                     <connections>
                         <outlet property="webView" destination="ymd-wW-pEu" id="Z8v-qq-vNa"/>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="gotoReadRecipes" id="EAZ-o3-BtO"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="gotoReadRecipes" id="EAZ-o3-BtO"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mes-cw-f5P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1509.5999999999999" y="125.4872563718141"/>
         </scene>
@@ -354,10 +355,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myCell" id="gMW-9k-TzV" customClass="MyCell" customModule="textToTableViewController" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="313" height="44"/>
+                                        <rect key="frame" x="0.0" y="92" width="313" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gMW-9k-TzV" id="1Mr-IA-0KV">
-                                            <frame key="frameInset" width="313" height="43"/>
+                                            <frame key="frameInset" width="313" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4WQ-CI-RTm" userLabel="myLabel">
@@ -514,7 +515,7 @@
             <objects>
                 <navigationController storyboardIdentifier="savedRecipesController" automaticallyAdjustsScrollViewInsets="NO" id="NVr-7C-g7C" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="WTX-JD-27c">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WTX-JD-27c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
