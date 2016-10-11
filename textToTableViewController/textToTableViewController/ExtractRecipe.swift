@@ -10,10 +10,10 @@ import UIKit
 
 class ExtractRecipe: UIViewController {
 
-    @IBAction func backBtn(_ sender: UIButton) {
+    @IBAction func backBtn(_ sender: UIBarButtonItem) {
          _ = self.navigationController?.popViewController(animated: true)
     }
-    @IBAction func homeBtn(_ sender: UIButton) {
+    @IBAction func homeBtn(_ sender: UIBarButtonItem) {
         let url = URL (string: "http://www.google.com/");
         let requestObj = URLRequest(url: url!);
         webView.loadRequest(requestObj);

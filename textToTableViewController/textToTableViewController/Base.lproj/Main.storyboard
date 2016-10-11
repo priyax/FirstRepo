@@ -251,7 +251,7 @@
             </objects>
             <point key="canvasLocation" x="740" y="122.78860569715144"/>
         </scene>
-        <!--Extract Recipe-->
+        <!--Search Web-->
         <scene sceneID="kAd-7k-Ya8">
             <objects>
                 <viewController id="1k4-yv-bw7" customClass="ExtractRecipe" customModule="textToTableViewController" customModuleProvider="target" sceneMemberID="viewController">
@@ -263,37 +263,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3nL-jJ-sAa">
-                                <frame key="frameInset" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem id="1J1-pO-ZVO">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="xPK-GF-QdG">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7jR-HQ-ziZ">
-                                                <rect key="frame" x="16" y="7" width="83" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="&lt;"/>
-                                                <connections>
-                                                    <action selector="backBtn:" destination="1k4-yv-bw7" eventType="touchUpInside" id="Xqa-7k-q6K"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="kFT-gl-NiM">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wXV-ua-wTK">
-                                                <rect key="frame" x="276" y="7" width="83" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Home"/>
-                                                <connections>
-                                                    <action selector="homeBtn:" destination="1k4-yv-bw7" eventType="touchUpInside" id="c2S-D7-48x"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ymd-wW-pEu">
-                                <frame key="frameInset" minX="16" minY="58" width="343" height="557"/>
+                                <frame key="frameInset" minX="16" minY="72" width="343" height="543"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
@@ -328,6 +299,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Search Web" id="tFx-Qu-4OP">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="zTN-Yc-NFC">
+                            <connections>
+                                <action selector="backBtn:" destination="1k4-yv-bw7" id="Da7-CT-tcz"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Home" id="1Xp-VW-EWK">
+                            <connections>
+                                <action selector="homeBtn:" destination="1k4-yv-bw7" id="eVU-zC-3mi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="webView" destination="ymd-wW-pEu" id="Z8v-qq-vNa"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="gotoReadRecipes" id="EAZ-o3-BtO"/>
@@ -404,16 +387,19 @@
                                     <action selector="stopReading:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iJZ-nJ-M74"/>
                                 </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aVF-NR-Sh8">
-                                <frame key="frameInset" minX="3" minY="-4" height="44" maxX="-3"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Title" id="ZRY-7Y-tcA"/>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Clipboard" id="yuy-dL-TnU">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="Vs2-Bz-ZNt"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="ny8-tR-AjI">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4Wc-Mk-9lC">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="startReading" destination="2fZ-k5-Arg" id="CMg-sa-iI2"/>
                     </connections>
