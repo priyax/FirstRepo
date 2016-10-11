@@ -10,10 +10,18 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+  
+    @IBAction func cancelBtn(_ sender: UIButton) {
+    }
+    @IBOutlet weak var signInBtn: UIButton!
+    @IBAction func signIn(_ sender: UIButton) {
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        emailField.addTarget(self, action: #selector(textFieldChanged(textField:)), for: UIControlEvents.editingChanged)
     }
     
     override func didReceiveMemoryWarning() {
@@ -21,5 +29,13 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func textFieldChanged(textField: UITextField) {
+        
+        if emailField.text == "" || passwordField.text == "" {
+            signInBtn.isEnabled = false
+        } else {
+            signInBtn.isEnabled = true
+        }
+    }
     
 }

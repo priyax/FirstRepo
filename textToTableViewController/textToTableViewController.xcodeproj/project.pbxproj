@@ -12,6 +12,8 @@
 		014E95A41DA6B0D900874354 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014E95A31DA6B0D900874354 /* RegisterViewController.swift */; };
 		014E95A61DA6B23700874354 /* ExtractRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014E95A51DA6B23700874354 /* ExtractRecipe.swift */; };
 		014E95A81DA6E91600874354 /* SavedRecipesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014E95A71DA6E91600874354 /* SavedRecipesController.swift */; };
+		014E95AA1DA80FC000874354 /* BackendlessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014E95A91DA80FC000874354 /* BackendlessManager.swift */; };
+		014E95AC1DA81D9400874354 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014E95AB1DA81D9400874354 /* Utility.swift */; };
 		015F25E51DA2C0D4006C6ED5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F25E41DA2C0D4006C6ED5 /* AppDelegate.swift */; };
 		015F25E71DA2C0D4006C6ED5 /* ReadRecipesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F25E61DA2C0D4006C6ED5 /* ReadRecipesController.swift */; };
 		015F25EA1DA2C0D4006C6ED5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 015F25E81DA2C0D4006C6ED5 /* Main.storyboard */; };
@@ -29,6 +31,8 @@
 		014E95A31DA6B0D900874354 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		014E95A51DA6B23700874354 /* ExtractRecipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtractRecipe.swift; sourceTree = "<group>"; };
 		014E95A71DA6E91600874354 /* SavedRecipesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedRecipesController.swift; sourceTree = "<group>"; };
+		014E95A91DA80FC000874354 /* BackendlessManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendlessManager.swift; sourceTree = "<group>"; };
+		014E95AB1DA81D9400874354 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		015F25E11DA2C0D4006C6ED5 /* textToTableViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = textToTableViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		015F25E41DA2C0D4006C6ED5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		015F25E61DA2C0D4006C6ED5 /* ReadRecipesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadRecipesController.swift; sourceTree = "<group>"; };
@@ -82,6 +86,7 @@
 			children = (
 				01BEAE7C1DA55FFC000CC913 /* textToTableViewController.entitlements */,
 				015F25E41DA2C0D4006C6ED5 /* AppDelegate.swift */,
+				014E95A91DA80FC000874354 /* BackendlessManager.swift */,
 				014E95A71DA6E91600874354 /* SavedRecipesController.swift */,
 				014E959F1DA6B0AE00874354 /* WelcomeViewController.swift */,
 				014E95A11DA6B0C700874354 /* LoginViewController.swift */,
@@ -93,6 +98,7 @@
 				015F25ED1DA2C0D4006C6ED5 /* LaunchScreen.storyboard */,
 				015F25F01DA2C0D4006C6ED5 /* Info.plist */,
 				015F25F61DA2CFBB006C6ED5 /* MyCell.swift */,
+				014E95AB1DA81D9400874354 /* Utility.swift */,
 			);
 			path = textToTableViewController;
 			sourceTree = "<group>";
@@ -248,9 +254,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				014E95AC1DA81D9400874354 /* Utility.swift in Sources */,
 				014E95A01DA6B0AE00874354 /* WelcomeViewController.swift in Sources */,
 				014E95A81DA6E91600874354 /* SavedRecipesController.swift in Sources */,
 				015F25E71DA2C0D4006C6ED5 /* ReadRecipesController.swift in Sources */,
+				014E95AA1DA80FC000874354 /* BackendlessManager.swift in Sources */,
 				014E95A41DA6B0D900874354 /* RegisterViewController.swift in Sources */,
 				015F25F71DA2CFBB006C6ED5 /* MyCell.swift in Sources */,
 				014E95A61DA6B23700874354 /* ExtractRecipe.swift in Sources */,
