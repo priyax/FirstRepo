@@ -85,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				01BEAE7C1DA55FFC000CC913 /* textToTableViewController.entitlements */,
+				014E95AB1DA81D9400874354 /* Utility.swift */,
 				015F25E41DA2C0D4006C6ED5 /* AppDelegate.swift */,
 				014E95A91DA80FC000874354 /* BackendlessManager.swift */,
 				014E95A71DA6E91600874354 /* SavedRecipesController.swift */,
@@ -98,7 +99,6 @@
 				015F25ED1DA2C0D4006C6ED5 /* LaunchScreen.storyboard */,
 				015F25F01DA2C0D4006C6ED5 /* Info.plist */,
 				015F25F61DA2CFBB006C6ED5 /* MyCell.swift */,
-				014E95AB1DA81D9400874354 /* Utility.swift */,
 			);
 			path = textToTableViewController;
 			sourceTree = "<group>";

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="NVr-7C-g7C">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BWo-vn-jpu">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -20,6 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxk-Ej-fNC" userLabel="Register">
+                                <color key="backgroundColor" red="1" green="0.9888662318" blue="0.996932072" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="NDf-MM-7jg"/>
                                     <constraint firstAttribute="height" constant="70" id="aQx-mG-Y3P"/>
@@ -28,7 +29,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Rra-Y4-PbT" kind="presentation" id="k88-uv-Dny"/>
+                                    <segue destination="Rra-Y4-PbT" kind="presentation" identifier="registerScreenSegue" id="k88-uv-Dny"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register to Save Recipes" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUY-pK-QNs" userLabel="Note ">
@@ -48,8 +49,12 @@
                                 <state key="normal" title="Skip for now">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="NVr-7C-g7C" kind="presentation" identifier="skipToSavedRecipes" id="FGd-kW-k10"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FuL-PT-1DB" userLabel="Sign In">
+                                <color key="backgroundColor" red="1" green="0.9888662318" blue="0.996932072" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="laG-bQ-gzd"/>
                                     <constraint firstAttribute="height" constant="70" id="u98-9d-O3D"/>
@@ -59,11 +64,11 @@
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Q30-lx-iP1" kind="presentation" id="LvW-Cj-UBn"/>
+                                    <segue destination="Q30-lx-iP1" kind="presentation" identifier="loginScreenSegue" id="LvW-Cj-UBn"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.67104328700000004" green="0.83119105459999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="hxk-Ej-fNC" firstAttribute="centerX" secondItem="e3x-H5-VJh" secondAttribute="centerX" id="7TT-JG-Zwe"/>
                             <constraint firstItem="pAA-Y1-Gso" firstAttribute="top" secondItem="hxk-Ej-fNC" secondAttribute="bottom" constant="20" id="FgN-0i-WJ7"/>
@@ -102,6 +107,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EWf-rQ-QQZ">
+                                <color key="backgroundColor" red="1" green="0.9888662318" blue="0.996932072" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="3qg-u6-OeT"/>
                                     <constraint firstAttribute="height" constant="40" id="hh5-Kr-2CD"/>
@@ -121,6 +127,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQK-67-NxS">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="CZf-ZN-y0g"/>
                                     <constraint firstAttribute="height" constant="40" id="Njq-0Q-JRx"/>
@@ -131,7 +138,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.67104328700000004" green="0.83119105459999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="4jJ-Mg-ok2" firstAttribute="centerX" secondItem="LQe-lm-W52" secondAttribute="centerX" id="1Ld-0V-PSm"/>
                             <constraint firstItem="2V3-qc-aWI" firstAttribute="top" secondItem="4jJ-Mg-ok2" secondAttribute="bottom" constant="30" id="2wc-Zx-uGQ"/>
@@ -147,7 +154,7 @@
                         <outlet property="emailField" destination="4jJ-Mg-ok2" id="2dV-wS-868"/>
                         <outlet property="passwordField" destination="2V3-qc-aWI" id="b6W-Hx-1Zr"/>
                         <outlet property="signInBtn" destination="EWf-rQ-QQZ" id="Ymi-gz-w0z"/>
-                        <segue destination="NVr-7C-g7C" kind="presentation" identifier="LoginSegue" id="LlY-JL-EwC"/>
+                        <segue destination="NVr-7C-g7C" kind="presentation" identifier="gotoSavedRecipesFromLogin" id="LlY-JL-EwC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MAx-N7-OgH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -236,15 +243,19 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="1k4-yv-bw7" kind="presentation" identifier="gotoExtractRecipe" id="aLH-9B-rqq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7gc-Gn-bda" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="740" y="122.78860569715144"/>
         </scene>
-        <!--View Controller-->
+        <!--Extract Recipe-->
         <scene sceneID="kAd-7k-Ya8">
             <objects>
-                <viewController id="1k4-yv-bw7" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mes-cw-f5P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="1k4-yv-bw7" customClass="ExtractRecipe" customModule="textToTableViewController" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ua4-93-Hey"/>
                         <viewControllerLayoutGuide type="bottom" id="dkI-Jr-FMj"/>
@@ -252,12 +263,78 @@
                     <view key="view" contentMode="scaleToFill" id="B7y-D7-UW1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3nL-jJ-sAa">
+                                <frame key="frameInset" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="1J1-pO-ZVO">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="xPK-GF-QdG">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7jR-HQ-ziZ">
+                                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="&lt;"/>
+                                                <connections>
+                                                    <action selector="backBtn:" destination="1k4-yv-bw7" eventType="touchUpInside" id="Xqa-7k-q6K"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="kFT-gl-NiM">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wXV-ua-wTK">
+                                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Home"/>
+                                                <connections>
+                                                    <action selector="homeBtn:" destination="1k4-yv-bw7" eventType="touchUpInside" id="c2S-D7-48x"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ymd-wW-pEu">
+                                <frame key="frameInset" minX="16" minY="58" width="343" height="557"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1LQ-IH-EAN">
+                                <frame key="frameInset" minX="50" height="44" maxX="16" maxY="8"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="&lt;" width="70" id="ym5-EM-OVk">
+                                        <connections>
+                                            <action selector="goBack" destination="ymd-wW-pEu" id="S1C-Kl-xj0"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="v8F-AA-GLC">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5tI-Th-xwf">
+                                            <rect key="frame" x="96" y="7" width="83" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="&gt;"/>
+                                            <connections>
+                                                <action selector="goForward" destination="ymd-wW-pEu" eventType="primaryActionTriggered" id="RtR-hS-ViY"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="0xo-LE-9VF">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Kzu-v2-qEN">
+                                            <rect key="frame" x="189" y="6" width="87" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Capture"/>
+                                        </button>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="ymd-wW-pEu" id="Z8v-qq-vNa"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="gotoReadRecipes" id="EAZ-o3-BtO"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Mes-cw-f5P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1511" y="126"/>
+            <point key="canvasLocation" x="1509.5999999999999" y="125.4872563718141"/>
         </scene>
         <!--ReadRecipesController-->
         <scene sceneID="tne-QT-ifu">
@@ -326,6 +403,13 @@
                                     <action selector="stopReading:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iJZ-nJ-M74"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aVF-NR-Sh8">
+                                <frame key="frameInset" minX="3" minY="-4" height="44" maxX="-3"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="ZRY-7Y-tcA"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -377,6 +461,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ayl-ix-pzT">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="GeO-Mt-VKV"/>
                                     <constraint firstAttribute="height" constant="40" id="nfO-nW-XOX"/>
@@ -387,14 +472,18 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qu9-2g-zPO">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="C6o-9J-naD"/>
                                     <constraint firstAttribute="width" constant="130" id="rnI-H0-xKw"/>
                                 </constraints>
                                 <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelBtn:" destination="Rra-Y4-PbT" eventType="touchUpInside" id="gkD-Pb-6oo"/>
+                                </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.67104328700000004" green="0.83119105459999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="t5L-8A-dhs" firstAttribute="top" secondItem="jOR-8o-YdF" secondAttribute="bottom" constant="30" id="0LZ-v0-4bJ"/>
                             <constraint firstItem="Qu9-2g-zPO" firstAttribute="centerX" secondItem="sUF-ht-eXe" secondAttribute="centerX" constant="75.5" id="0jf-BB-Caw"/>
@@ -413,7 +502,7 @@
                         <outlet property="emailFieldReg" destination="jOR-8o-YdF" id="DNp-JB-axE"/>
                         <outlet property="passwordFieldReg" destination="t5L-8A-dhs" id="ahx-NI-WiB"/>
                         <outlet property="regBtn" destination="ayl-ix-pzT" id="rx0-Rh-FC8"/>
-                        <segue destination="NVr-7C-g7C" kind="presentation" identifier="RegisterSegue" id="2iy-cO-Uw0"/>
+                        <segue destination="NVr-7C-g7C" kind="presentation" identifier="gotoSavedRecipesFromRegister" id="2iy-cO-Uw0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iVW-c0-ycW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -425,9 +514,10 @@
             <objects>
                 <navigationController storyboardIdentifier="savedRecipesController" automaticallyAdjustsScrollViewInsets="NO" id="NVr-7C-g7C" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WTX-JD-27c">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="WTX-JD-27c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -440,6 +530,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="LlY-JL-EwC"/>
+        <segue reference="2iy-cO-Uw0"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -36,6 +36,7 @@ class SavedRecipesController: UIViewController {
                                                 preferredStyle: .actionSheet)
         
         let extractFromWeb = UIAlertAction(title: "Recipe from Web", style: .default) { action in
+            self.performSegue(withIdentifier: "gotoExtractRecipe", sender: self)
             print("Save was selected!")
         }
         
