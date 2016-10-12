@@ -8,4 +8,5 @@ target 'textToTableViewController' do
   # Pods for textToTableViewController
 
 pod 'Backendless'
+pod 'Alamofire', '~> 4.0' 
 end

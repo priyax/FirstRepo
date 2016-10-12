@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ExtractRecipe: UIViewController {
 
@@ -33,7 +34,39 @@ class ExtractRecipe: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func selectRecipe(_ sender: UIButton) {
+    
+        // Below is an example of how to pass URL parameters and set a HTTP header
+        // for your Alamofire GET request:
+        
+         let parameters: Parameters = [
+         "forceExtraction": "false",
+         "url": "http://www.melskitchencafe.com/the-best-fudgy-brownies/"
+         ]
+         
+         let headers: HTTPHeaders = [
+         "X-Mashape-Key": "pzvlLbDM00mshRETcOj2MRdfKLJzp19j3qcjsniUjlvbaDIiaw"
+         ]
+         
+         Alamofire.request("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract", parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON { response in
+         
+         // The GET request for the JSON data has returned.
+         //print(response.request)  // original URL request
+         //print(response.response) // URL response
+         print(response.data)     // server data
+         //print(response.result)   // result of response serialization
+         
+         if let jsonString = response.result.value {
+         print("jsonString = \(jsonString)")
+         } else {
+         print("Failed to get a value from the response.")
+         }
+         }
+         
 
+    
+    
+    }
     /*
     // MARK: - Navigation
 

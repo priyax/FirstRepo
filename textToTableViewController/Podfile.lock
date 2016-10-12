@@ -1,12 +1,15 @@
 PODS:
+  - Alamofire (4.0.1)
   - Backendless (3.0.37)
 
 DEPENDENCIES:
+  - Alamofire (~> 4.0)
   - Backendless
 
 SPEC CHECKSUMS:
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   Backendless: 9fcde1637d92a04380ba5d558e43c9b42d9fb1dd
 
-PODFILE CHECKSUM: be330cb2555e5d7564de5bb1acaedde7886fc94d
+PODFILE CHECKSUM: 5d7bae8b49aefdff57698e18576c3ce8dcb2394e
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.0.rc.2
