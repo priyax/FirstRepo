@@ -273,6 +273,9 @@
                                             <rect key="frame" x="16" y="18" width="50" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="&lt;"/>
+                                            <connections>
+                                                <action selector="goBack" destination="ymd-wW-pEu" eventType="touchDragInside" id="lb1-AN-K80"/>
+                                            </connections>
                                         </button>
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="v8F-AA-GLC">
@@ -281,7 +284,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="&gt;"/>
                                             <connections>
-                                                <action selector="goForward" destination="ymd-wW-pEu" eventType="primaryActionTriggered" id="RtR-hS-ViY"/>
+                                                <action selector="goForward" destination="ymd-wW-pEu" eventType="touchUpInside" id="bi5-G7-pmT"/>
                                             </connections>
                                         </button>
                                     </barButtonItem>

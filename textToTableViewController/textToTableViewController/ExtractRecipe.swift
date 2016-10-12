@@ -10,12 +10,12 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class ExtractRecipe: UIViewController {
+class ExtractRecipe: UIViewController{
     
     struct recipeData {
-        var title: String
-        var ingredients: [String]
-        var instruction: String
+        var title: String?
+        var ingredients: [String?]
+        var instruction: String?
     }
 
     @IBAction func backBtn(_ sender: UIBarButtonItem) {
@@ -41,14 +41,18 @@ class ExtractRecipe: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+   
+    
     @IBAction func selectRecipe(_ sender: UIButton) {
     
         // Below is an example of how to pass URL parameters and set a HTTP header
         // for your Alamofire GET request:
         
+        let recipeURL = webView.request?.url
+        print("REcipe url \(recipeURL)")
          let parameters: Parameters = [
          "forceExtraction": "false",
-         "url": "http://www.melskitchencafe.com/the-best-fudgy-brownies/"
+         "url": recipeURL
          ]
          
          let headers: HTTPHeaders = [
@@ -60,18 +64,19 @@ class ExtractRecipe: UIViewController {
          // The GET request for the JSON data has returned.
          //print(response.request)  // original URL request
          //print(response.response) // URL response
-         print(response.data)     // server data
+ //        print(response.data)     // server data
          //print(response.result)   // result of response serialization
          
          if let jsonString = response.result.value {
             
             let json = JSON.parse(jsonString)
             
-            let title = json.dictionaryValue["title"]!.stringValue
-            var ingredients = [String]()
+            let title = json.dictionaryValue["title"]?.stringValue
+            ////breaking here
+            var ingredients = [String?]()
             
             for arrayEntry in json.dictionaryValue["extendedIngredients"]!.arrayValue {
-                ingredients.append(arrayEntry.dictionaryValue["name"]!.stringValue)
+                ingredients.append(arrayEntry.dictionaryValue["name"]?.stringValue)
             
             }
            
@@ -82,6 +87,7 @@ class ExtractRecipe: UIViewController {
          print("recipe title= \(recipe.title)")
         print("ingredients in recipe are = \(recipe.ingredients)")
             print("recipe instructions = \(recipe.instruction)")
+            
          } else {
          print("Failed to get a value from the response.")
          }
