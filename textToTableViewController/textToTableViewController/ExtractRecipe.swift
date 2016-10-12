@@ -8,8 +8,15 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 class ExtractRecipe: UIViewController {
+    
+    struct recipeData {
+        var title: String
+        var ingredients: [String]
+        var instruction: String
+    }
 
     @IBAction func backBtn(_ sender: UIBarButtonItem) {
          _ = self.navigationController?.popViewController(animated: true)
@@ -48,7 +55,7 @@ class ExtractRecipe: UIViewController {
          "X-Mashape-Key": "pzvlLbDM00mshRETcOj2MRdfKLJzp19j3qcjsniUjlvbaDIiaw"
          ]
          
-         Alamofire.request("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract", parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON { response in
+         Alamofire.request("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract", parameters: parameters, encoding: URLEncoding.default, headers: headers).responseString { response in
          
          // The GET request for the JSON data has returned.
          //print(response.request)  // original URL request
@@ -57,7 +64,24 @@ class ExtractRecipe: UIViewController {
          //print(response.result)   // result of response serialization
          
          if let jsonString = response.result.value {
-         print("jsonString = \(jsonString)")
+            
+            let json = JSON.parse(jsonString)
+            
+            let title = json.dictionaryValue["title"]!.stringValue
+            var ingredients = [String]()
+            
+            for arrayEntry in json.dictionaryValue["extendedIngredients"]!.arrayValue {
+                ingredients.append(arrayEntry.dictionaryValue["name"]!.stringValue)
+            
+            }
+           
+            let instructions = json.dictionaryValue["text"]!.stringValue
+            
+            let recipe =  recipeData.init(title: title, ingredients: ingredients, instruction: instructions)
+            
+         print("recipe title= \(recipe.title)")
+        print("ingredients in recipe are = \(recipe.ingredients)")
+            print("recipe instructions = \(recipe.instruction)")
          } else {
          print("Failed to get a value from the response.")
          }

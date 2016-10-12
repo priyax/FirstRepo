@@ -9,4 +9,5 @@ target 'textToTableViewController' do
 
 pod 'Backendless'
 pod 'Alamofire', '~> 4.0' 
+pod 'SwiftyJSON'
 end
