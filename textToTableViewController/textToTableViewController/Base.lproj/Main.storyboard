@@ -68,7 +68,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.67104328700000004" green="0.83119105459999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="0.41892750433225845" blue="0.37129930291308499" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="hxk-Ej-fNC" firstAttribute="centerX" secondItem="e3x-H5-VJh" secondAttribute="centerX" id="7TT-JG-Zwe"/>
                             <constraint firstItem="pAA-Y1-Gso" firstAttribute="top" secondItem="hxk-Ej-fNC" secondAttribute="bottom" constant="20" id="FgN-0i-WJ7"/>
@@ -138,7 +138,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.67104328700000004" green="0.83119105459999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="0.41892750433225845" blue="0.37129930291308499" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="4jJ-Mg-ok2" firstAttribute="centerX" secondItem="LQe-lm-W52" secondAttribute="centerX" id="1Ld-0V-PSm"/>
                             <constraint firstItem="2V3-qc-aWI" firstAttribute="top" secondItem="4jJ-Mg-ok2" secondAttribute="bottom" constant="30" id="2wc-Zx-uGQ"/>
@@ -190,7 +190,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="73"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N1e-kZ-R4H" id="RSv-Fx-Da4">
-                                            <frame key="frameInset" width="375" height="72"/>
+                                            <frame key="frameInset" width="375" height="73"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0mY-Gq-aAW" userLabel="Recipe Pic">
@@ -217,6 +217,9 @@
                                                 <constraint firstItem="guo-5U-Y0c" firstAttribute="top" secondItem="RSv-Fx-Da4" secondAttribute="topMargin" constant="5" id="cMx-Zy-Xlr"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="gotoReadRecipesFromTableVC" id="Rk5-dv-wPM"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -236,6 +239,7 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="udS-P7-A8a">
                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
                                 <state key="normal" title="+"/>
                                 <connections>
                                     <action selector="addRecipe:" destination="Lvl-ak-fbP" eventType="touchUpInside" id="Hla-C6-mq6"/>
@@ -245,6 +249,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="1k4-yv-bw7" kind="show" identifier="gotoExtractRecipe" id="aLH-9B-rqq"/>
+                        <segue destination="kVP-tt-4DO" kind="show" identifier="gotoTypingRecipe" id="9PS-ah-xhG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7gc-Gn-bda" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -335,6 +340,34 @@
             </objects>
             <point key="canvasLocation" x="1509.5999999999999" y="125.4872563718141"/>
         </scene>
+        <!--Typing Recipes View Controller-->
+        <scene sceneID="ZmU-8J-rBd">
+            <objects>
+                <viewController id="kVP-tt-4DO" customClass="TypingRecipesViewController" customModule="textToTableViewController" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8IQ-RK-9AU"/>
+                        <viewControllerLayoutGuide type="bottom" id="Hcp-mS-XDu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="c2d-Fh-mPT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="COR-Xn-DTR">
+                                <frame key="frameInset" minX="100" minY="568" width="175" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Select Recipe"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="gotoReadRecipesFromTyping" id="yvw-5C-ruz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X7q-Dn-npN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="125.59999999999999" y="871.21439280359823"/>
+        </scene>
         <!--ReadRecipesController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -352,11 +385,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myCell" id="gMW-9k-TzV" customClass="MyCell" customModule="textToTableViewController" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recipeTableViewCell" id="gMW-9k-TzV" customClass="MyCell" customModule="textToTableViewController" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="313" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gMW-9k-TzV" id="1Mr-IA-0KV">
-                                            <frame key="frameInset" width="313" height="43"/>
+                                            <frame key="frameInset" width="313" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4WQ-CI-RTm" userLabel="myLabel">
@@ -406,7 +439,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Clipboard" id="yuy-dL-TnU">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="Vs2-Bz-ZNt"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="Vs2-Bz-ZNt"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="ny8-tR-AjI">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4Wc-Mk-9lC">
                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
@@ -421,7 +454,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2324" y="122.78860569715144"/>
+            <point key="canvasLocation" x="1510" y="946"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="VTJ-nY-Ytk">
@@ -485,7 +518,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.67104328700000004" green="0.83119105459999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="0.41892750433225845" blue="0.37129930291308499" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="t5L-8A-dhs" firstAttribute="top" secondItem="jOR-8o-YdF" secondAttribute="bottom" constant="30" id="0LZ-v0-4bJ"/>
                             <constraint firstItem="Qu9-2g-zPO" firstAttribute="centerX" secondItem="sUF-ht-eXe" secondAttribute="centerX" constant="75.5" id="0jf-BB-Caw"/>
@@ -516,10 +549,10 @@
             <objects>
                 <navigationController storyboardIdentifier="savedRecipesController" automaticallyAdjustsScrollViewInsets="NO" id="NVr-7C-g7C" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WTX-JD-27c">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="WTX-JD-27c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="0.41892750429999998" blue="0.37129930290000002" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -532,6 +565,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="2iy-cO-Uw0"/>
+        <segue reference="LlY-JL-EwC"/>
+        <segue reference="yvw-5C-ruz"/>
     </inferredMetricsTieBreakers>
 </document>

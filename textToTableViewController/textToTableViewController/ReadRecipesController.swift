@@ -11,9 +11,14 @@ import AVFoundation
 
 class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewDataSource,AVSpeechSynthesizerDelegate {
 
-    let myRecipeText = "1. Heat oven to 350°F. Grease and flour two 9-inch round baking pans. 2. Stir together sugar, flour, cocoa, baking powder, baking soda and salt in large bowl. Add eggs, milk, oil and vanilla; beat on medium speed of mixer 2 minutes. Stir in boiling water (batter will be thin). Pour batter into prepared pans.Start. 3. Bake 30 to 35 minutes or until wooden pick inserted in center comes out clean. Cool 10 minutes; remove from pans to wire racks. Cool completely. CHOCOLATE FROSTING. Makes 12 servings."
+    var recipeToLoad: RecipeData?
     
-    var myRecipeArray = ["1. Heat oven to 350°F. Grease and flour two 9-inch round baking pans.", "2. Stir together sugar, flour, cocoa, baking powder, baking soda and salt in large bowl.","Add eggs, milk, oil and vanilla; beat on medium speed of mixer 2 minutes. Stir in boiling water (batter will be thin)."]
+    //let myRecipeText = "1. Heat oven to 350°F. Grease and flour two 9-inch round baking pans. 2. Stir together sugar, flour, cocoa, baking powder, baking soda and salt in large bowl. Add eggs, milk, oil and vanilla; beat on medium speed of mixer 2 minutes. Stir in boiling water (batter will be thin). Pour batter into prepared pans.Start. 3. Bake 30 to 35 minutes or until wooden pick inserted in center comes out clean. Cool 10 minutes; remove from pans to wire racks. Cool completely. CHOCOLATE FROSTING. Makes 12 servings."
+    
+    //var myRecipeArray = ["1. Heat oven to 350°F. Grease and flour two 9-inch round baking pans.", "2. Stir together sugar, flour, cocoa, baking powder, baking soda and salt in large bowl.","Add eggs, milk, oil and vanilla; beat on medium speed of mixer 2 minutes. Stir in boiling water (batter will be thin)."]
+    
+    var myRecipeArray = [String]()
+    
     
     var synthesizer = AVSpeechSynthesizer()
     
@@ -25,6 +30,15 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        myRecipeArray.append(recipeToLoad!.title!)
+        
+        for i in recipeToLoad!.ingredients! {
+        myRecipeArray.append(i)
+        }
+        
+        myRecipeArray.append(recipeToLoad!.instructions!)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,7 +110,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
     // From UITableViewDataSource protocol.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! MyCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "recipeTableViewCell", for: indexPath) as! RecipeTableViewCell
         
         cell.myLabel.text = myRecipeArray[(indexPath as NSIndexPath).row]
         

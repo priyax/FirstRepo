@@ -10,13 +10,11 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class ExtractRecipe: UIViewController{
+class ExtractRecipe: UIViewController {
     
-    struct recipeData {
-        var title: String?
-        var ingredients: [String?]
-        var instruction: String?
-    }
+    var recipeData: RecipeData?
+    
+   // var recipe :recipeData
 
     @IBAction func backBtn(_ sender: UIBarButtonItem) {
          _ = self.navigationController?.popViewController(animated: true)
@@ -48,11 +46,12 @@ class ExtractRecipe: UIViewController{
         // Below is an example of how to pass URL parameters and set a HTTP header
         // for your Alamofire GET request:
         
-        let recipeURL = webView.request?.url
-        print("REcipe url \(recipeURL)")
+       // let recipeUrl = webView.request?.url
+        let recipeUrl = URL(string: "http://www.joyofbaking.com/brownies.html")
+        print("REcipe url \(recipeUrl)")
          let parameters: Parameters = [
          "forceExtraction": "false",
-         "url": recipeURL
+         "url": recipeUrl!
          ]
          
          let headers: HTTPHeaders = [
@@ -62,31 +61,35 @@ class ExtractRecipe: UIViewController{
          Alamofire.request("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract", parameters: parameters, encoding: URLEncoding.default, headers: headers).responseString { response in
          
          // The GET request for the JSON data has returned.
-         //print(response.request)  // original URL request
-         //print(response.response) // URL response
- //        print(response.data)     // server data
-         //print(response.result)   // result of response serialization
+//         print(response.request)  // original URL request
+//         print(response.response) // URL response
+//         print(response.data)     // server data
+//         print(response.result)   // result of response serialization
          
          if let jsonString = response.result.value {
             
             let json = JSON.parse(jsonString)
             
             let title = json.dictionaryValue["title"]?.stringValue
-            ////breaking here
-            var ingredients = [String?]()
             
-            for arrayEntry in json.dictionaryValue["extendedIngredients"]!.arrayValue {
-                ingredients.append(arrayEntry.dictionaryValue["name"]?.stringValue)
+            var ingredients = [String]()
             
+            
+            if let ingredientsArray = json.dictionaryValue["extendedIngredients"]?.arrayValue {
+                
+                for arrayEntry in ingredientsArray {
+                    ingredients.append(arrayEntry.dictionaryValue["name"]!.stringValue)
+                }
             }
            
-            let instructions = json.dictionaryValue["text"]!.stringValue
+           let instructions = json.dictionaryValue["text"]?.stringValue
+           let thumbnailUrl = json.dictionaryValue["imageUrls"]?.stringValue
+           
             
-            let recipe =  recipeData.init(title: title, ingredients: ingredients, instruction: instructions)
-            
-         print("recipe title= \(recipe.title)")
-        print("ingredients in recipe are = \(recipe.ingredients)")
-            print("recipe instructions = \(recipe.instruction)")
+            self.recipeData = RecipeData(title: title, ingredients: ingredients, instructions: instructions, recipeUrl: recipeUrl?.absoluteString, thumbnailUrl: thumbnailUrl)
+//         print("recipe title= \(recipe.title)")
+//        print("ingredients in recipe are = \(recipe.ingredients)")
+//            print("recipe instructions = \(recipe.instruction)")
             
          } else {
          print("Failed to get a value from the response.")
@@ -106,5 +109,21 @@ class ExtractRecipe: UIViewController{
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
+        
+        
+       if segue.identifier == "gotoReadRecipes" {
+            
+            print("Preparing to go to read Recipes view!")
+            
+            // If we need to, modify the next UIViewController.
+            let nextVC = segue.destination as! ReadRecipesController
+            
+            nextVC.recipeToLoad = self.recipeData
+        }
+    }
 
 }

@@ -19,9 +19,12 @@
 		015F25EA1DA2C0D4006C6ED5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 015F25E81DA2C0D4006C6ED5 /* Main.storyboard */; };
 		015F25EC1DA2C0D4006C6ED5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 015F25EB1DA2C0D4006C6ED5 /* Assets.xcassets */; };
 		015F25EF1DA2C0D4006C6ED5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 015F25ED1DA2C0D4006C6ED5 /* LaunchScreen.storyboard */; };
-		015F25F71DA2CFBB006C6ED5 /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F25F61DA2CFBB006C6ED5 /* MyCell.swift */; };
+		015F25F71DA2CFBB006C6ED5 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F25F61DA2CFBB006C6ED5 /* RecipeTableViewCell.swift */; };
 		015F25FA1DA2E320006C6ED5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 015F25F91DA2E320006C6ED5 /* AVFoundation.framework */; };
 		015F25FC1DA2E332006C6ED5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 015F25FB1DA2E332006C6ED5 /* AudioToolbox.framework */; };
+		0196EA9F1DB1317F001EBE25 /* RecipeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0196EA9E1DB1317F001EBE25 /* RecipeData.swift */; };
+		0196EAA11DB13680001EBE25 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0196EAA01DB13680001EBE25 /* Recipe.swift */; };
+		0196EAA31DB141F7001EBE25 /* TypingRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0196EAA21DB141F7001EBE25 /* TypingRecipesViewController.swift */; };
 		DCB3A34C1F0923D4EA730D40 /* Pods_textToTableViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FE1A764298064E11B233DE4 /* Pods_textToTableViewController.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,9 +43,12 @@
 		015F25EB1DA2C0D4006C6ED5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		015F25EE1DA2C0D4006C6ED5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		015F25F01DA2C0D4006C6ED5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		015F25F61DA2CFBB006C6ED5 /* MyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCell.swift; sourceTree = "<group>"; };
+		015F25F61DA2CFBB006C6ED5 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		015F25F91DA2E320006C6ED5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		015F25FB1DA2E332006C6ED5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		0196EA9E1DB1317F001EBE25 /* RecipeData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeData.swift; sourceTree = "<group>"; };
+		0196EAA01DB13680001EBE25 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		0196EAA21DB141F7001EBE25 /* TypingRecipesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypingRecipesViewController.swift; sourceTree = "<group>"; };
 		080C789C949394BC4F4CDB75 /* Pods-textToTableViewController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-textToTableViewController.release.xcconfig"; path = "Pods/Target Support Files/Pods-textToTableViewController/Pods-textToTableViewController.release.xcconfig"; sourceTree = "<group>"; };
 		1FE1A764298064E11B233DE4 /* Pods_textToTableViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_textToTableViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CCD06E962E22DD8E957513F /* Pods-textToTableViewController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-textToTableViewController.debug.xcconfig"; path = "Pods/Target Support Files/Pods-textToTableViewController/Pods-textToTableViewController.debug.xcconfig"; sourceTree = "<group>"; };
@@ -85,6 +91,8 @@
 			children = (
 				014E95AB1DA81D9400874354 /* Utility.swift */,
 				015F25E41DA2C0D4006C6ED5 /* AppDelegate.swift */,
+				0196EA9E1DB1317F001EBE25 /* RecipeData.swift */,
+				0196EAA01DB13680001EBE25 /* Recipe.swift */,
 				014E95A91DA80FC000874354 /* BackendlessManager.swift */,
 				014E95A71DA6E91600874354 /* SavedRecipesController.swift */,
 				014E959F1DA6B0AE00874354 /* WelcomeViewController.swift */,
@@ -96,7 +104,8 @@
 				015F25EB1DA2C0D4006C6ED5 /* Assets.xcassets */,
 				015F25ED1DA2C0D4006C6ED5 /* LaunchScreen.storyboard */,
 				015F25F01DA2C0D4006C6ED5 /* Info.plist */,
-				015F25F61DA2CFBB006C6ED5 /* MyCell.swift */,
+				015F25F61DA2CFBB006C6ED5 /* RecipeTableViewCell.swift */,
+				0196EAA21DB141F7001EBE25 /* TypingRecipesViewController.swift */,
 			);
 			path = textToTableViewController;
 			sourceTree = "<group>";
@@ -255,11 +264,14 @@
 				014E95AC1DA81D9400874354 /* Utility.swift in Sources */,
 				014E95A01DA6B0AE00874354 /* WelcomeViewController.swift in Sources */,
 				014E95A81DA6E91600874354 /* SavedRecipesController.swift in Sources */,
+				0196EAA11DB13680001EBE25 /* Recipe.swift in Sources */,
 				015F25E71DA2C0D4006C6ED5 /* ReadRecipesController.swift in Sources */,
 				014E95AA1DA80FC000874354 /* BackendlessManager.swift in Sources */,
 				014E95A41DA6B0D900874354 /* RegisterViewController.swift in Sources */,
-				015F25F71DA2CFBB006C6ED5 /* MyCell.swift in Sources */,
+				0196EAA31DB141F7001EBE25 /* TypingRecipesViewController.swift in Sources */,
+				015F25F71DA2CFBB006C6ED5 /* RecipeTableViewCell.swift in Sources */,
 				014E95A61DA6B23700874354 /* ExtractRecipe.swift in Sources */,
+				0196EA9F1DB1317F001EBE25 /* RecipeData.swift in Sources */,
 				015F25E51DA2C0D4006C6ED5 /* AppDelegate.swift in Sources */,
 				014E95A21DA6B0C700874354 /* LoginViewController.swift in Sources */,
 			);

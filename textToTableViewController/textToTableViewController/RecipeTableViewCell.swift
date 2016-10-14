@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyCell: UITableViewCell {
+class RecipeTableViewCell: UITableViewCell {
 
    
     @IBOutlet weak var myLabel: UILabel!
