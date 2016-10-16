@@ -16,6 +16,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
     var myRecipeArray = [String]()
     
     
+    
     var synthesizer = AVSpeechSynthesizer()
     
     @IBOutlet weak var startReading: UIButton!
@@ -29,15 +30,17 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         
         if let recipe = recipeToLoad {
             if let title = recipe.title {
-                myRecipeArray.append(title)
+                myRecipeArray.append("Recipe for \(title)")
             }
             if let ingredients = recipe.ingredients {
+                myRecipeArray.append("The Ingredients required are: ")
                 for i in ingredients {
                     myRecipeArray.append(i)
                 }
             
             }
             if let instructions = recipe.instructions {
+                myRecipeArray.append("Instructions: ")
                 myRecipeArray.append(instructions)
             }
         }
@@ -67,7 +70,12 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     @IBAction func pauseReading(_ sender: UIButton) {
-        synthesizer.pauseSpeaking(at: AVSpeechBoundary.word)
+        if synthesizer.isSpeaking {
+            synthesizer.pauseSpeaking(at: AVSpeechBoundary.word)
+            print("Is PAUSED")
+        }
+    
+        
         
     }
     
@@ -75,6 +83,9 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         
         synthesizer.stopSpeaking(at: AVSpeechBoundary.word)     }
     
+    @IBAction func backBtn(_ sender: UIButton) {
+        navigationController!.popViewController(animated: true)
+    }
     //Speech Synthesizer
     func callSpeechSynthesizer(step: String) {
         

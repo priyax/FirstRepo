@@ -182,8 +182,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="73" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SQd-HB-T1g">
-                                <frame key="frameInset" minY="127" width="375" height="553"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="73" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SQd-HB-T1g">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="73" id="N1e-kZ-R4H">
@@ -229,7 +228,7 @@
                             <constraint firstItem="tCd-DQ-H3i" firstAttribute="centerX" secondItem="T9v-gA-8cY" secondAttribute="centerX" id="35k-c1-tBZ"/>
                             <constraint firstItem="Xkn-uh-6gh" firstAttribute="top" secondItem="SQd-HB-T1g" secondAttribute="bottom" id="6ZF-lj-BoB"/>
                             <constraint firstAttribute="trailing" secondItem="SQd-HB-T1g" secondAttribute="trailing" id="O7i-q4-qG5"/>
-                            <constraint firstItem="SQd-HB-T1g" firstAttribute="top" secondItem="tCd-DQ-H3i" secondAttribute="bottom" constant="10" id="ZJu-nR-2UL"/>
+                            <constraint firstItem="SQd-HB-T1g" firstAttribute="top" secondItem="tCd-DQ-H3i" secondAttribute="bottom" id="ZJu-nR-2UL"/>
                             <constraint firstItem="tCd-DQ-H3i" firstAttribute="top" secondItem="Vcs-aV-kIQ" secondAttribute="bottom" constant="20" id="fgU-u3-k4u"/>
                             <constraint firstItem="SQd-HB-T1g" firstAttribute="leading" secondItem="T9v-gA-8cY" secondAttribute="leading" id="sjx-aa-iYk"/>
                         </constraints>
@@ -275,7 +274,7 @@
                                 <items>
                                     <barButtonItem style="plain" id="dzD-tL-6IN">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Wxs-Rr-SBZ">
-                                            <rect key="frame" x="16" y="18" width="50" height="30"/>
+                                            <rect key="frame" x="16" y="13" width="50" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="&lt;"/>
                                             <connections>
@@ -285,7 +284,7 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="v8F-AA-GLC">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5tI-Th-xwf">
-                                            <rect key="frame" x="76" y="18" width="50" height="30"/>
+                                            <rect key="frame" x="76" y="13" width="50" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="&gt;"/>
                                             <connections>
@@ -295,7 +294,7 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="0xo-LE-9VF">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Kzu-v2-qEN">
-                                            <rect key="frame" x="136" y="18" width="190" height="30"/>
+                                            <rect key="frame" x="136" y="13" width="190" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Select Recipe"/>
                                             <connections>
@@ -316,7 +315,7 @@
                             <constraint firstItem="ymd-wW-pEu" firstAttribute="centerX" secondItem="B7y-D7-UW1" secondAttribute="centerX" id="aUq-dv-AIJ"/>
                             <constraint firstItem="1LQ-IH-EAN" firstAttribute="top" secondItem="ymd-wW-pEu" secondAttribute="bottom" id="abj-Eb-Mxm"/>
                             <constraint firstItem="1LQ-IH-EAN" firstAttribute="leading" secondItem="B7y-D7-UW1" secondAttribute="leadingMargin" id="pWe-2A-w31"/>
-                            <constraint firstItem="ymd-wW-pEu" firstAttribute="top" secondItem="ua4-93-Hey" secondAttribute="bottom" constant="10" id="sRV-GF-CpP"/>
+                            <constraint firstItem="ymd-wW-pEu" firstAttribute="top" secondItem="ua4-93-Hey" secondAttribute="bottom" id="sRV-GF-CpP"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Search Web" id="tFx-Qu-4OP">
@@ -380,19 +379,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zjn-Zw-yqP">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="2" rowHeight="48" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zjn-Zw-yqP">
                                 <frame key="frameInset" minX="34" minY="72" width="313" height="498"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recipeTableViewCell" id="gMW-9k-TzV" customClass="RecipeTableViewCell" customModule="textToTableViewController" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="313" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recipeTableViewCell" rowHeight="48" id="gMW-9k-TzV" customClass="RecipeTableViewCell" customModule="textToTableViewController" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="313" height="48"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gMW-9k-TzV" id="1Mr-IA-0KV">
-                                            <frame key="frameInset" width="313" height="43"/>
+                                            <frame key="frameInset" width="313" height="47"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4WQ-CI-RTm" userLabel="myLabel">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4WQ-CI-RTm" userLabel="myLabel">
                                                     <frame key="frameInset" minX="8" minY="3" width="297" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -411,7 +410,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="bz3-aw-bCA"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fZ-k5-Arg">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fZ-k5-Arg" userLabel="startReading">
                                 <frame key="frameInset" minX="53" minY="594" width="54" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Start"/>
@@ -419,10 +418,10 @@
                                     <action selector="startReading:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Vb-Ac-8WE"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="du7-Bt-dLI">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="du7-Bt-dLI" userLabel="pauseReading">
                                 <frame key="frameInset" minX="162" minY="594" width="56" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Pause"/>
+                                <state key="normal" title="Pause "/>
                                 <connections>
                                     <action selector="pauseReading:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rd4-sg-rcB"/>
                                 </connections>
@@ -444,6 +443,9 @@
                                 <rect key="frame" x="16" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VQW-9o-8iB"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="ny8-tR-AjI">
@@ -461,7 +463,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1510" y="946"/>
+            <point key="canvasLocation" x="1509.5999999999999" y="945.87706146926541"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="VTJ-nY-Ytk">
@@ -573,6 +575,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="LlY-JL-EwC"/>
-        <segue reference="EAZ-o3-BtO"/>
+        <segue reference="Rk5-dv-wPM"/>
     </inferredMetricsTieBreakers>
 </document>

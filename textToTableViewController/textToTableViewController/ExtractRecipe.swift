@@ -81,7 +81,7 @@ class ExtractRecipe: UIViewController {
             if let ingredientsArray = json.dictionaryValue["extendedIngredients"]?.arrayValue {
                 
                 for arrayEntry in ingredientsArray {
-                    ingredients.append(arrayEntry.dictionaryValue["name"]!.stringValue)
+                    ingredients.append(arrayEntry.dictionaryValue["originalString"]!.stringValue)
                 }
             }
            
