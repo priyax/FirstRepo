@@ -46,8 +46,8 @@ class ExtractRecipe: UIViewController {
         // Below is an example of how to pass URL parameters and set a HTTP header
         // for your Alamofire GET request:
         
-       // let recipeUrl = webView.request?.url
-        let recipeUrl = URL(string: "http://www.joyofbaking.com/brownies.html")
+       let recipeUrl = webView.request?.url
+        //let recipeUrl = URL(string: "http://www.joyofbaking.com/brownies.html")
         print("REcipe url \(recipeUrl)")
          let parameters: Parameters = [
          "forceExtraction": "false",
@@ -57,20 +57,23 @@ class ExtractRecipe: UIViewController {
          let headers: HTTPHeaders = [
          "X-Mashape-Key": "pzvlLbDM00mshRETcOj2MRdfKLJzp19j3qcjsniUjlvbaDIiaw"
          ]
-         
+         print("Parameters \(parameters)")
          Alamofire.request("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract", parameters: parameters, encoding: URLEncoding.default, headers: headers).responseString { response in
          
          // The GET request for the JSON data has returned.
-//         print(response.request)  // original URL request
-//         print(response.response) // URL response
-//         print(response.data)     // server data
-//         print(response.result)   // result of response serialization
+         print("Response . request \(response.request)")  // original URL request
+         print(response.response) // URL response
+         print(response.data)     // server data
+         print(response.result)   // result of response serialization
          
          if let jsonString = response.result.value {
             
+            print("JSON String \(jsonString)")
             let json = JSON.parse(jsonString)
             
+            print("JSON  \(json)")
             let title = json.dictionaryValue["title"]?.stringValue
+            print("TITLE !!!! \(title)")
             
             var ingredients = [String]()
             
@@ -87,16 +90,20 @@ class ExtractRecipe: UIViewController {
            
             
             self.recipeData = RecipeData(title: title, ingredients: ingredients, instructions: instructions, recipeUrl: recipeUrl?.absoluteString, thumbnailUrl: thumbnailUrl)
-//         print("recipe title= \(recipe.title)")
-//        print("ingredients in recipe are = \(recipe.ingredients)")
-//            print("recipe instructions = \(recipe.instruction)")
+         
+            print(" TITLE IN RECIPE DATA \(self.recipeData?.title)")
             
+             self.performSegue(withIdentifier: "gotoReadRecipes", sender: sender)
          } else {
          print("Failed to get a value from the response.")
          }
          }
-         
-
+        
+//        print("recipe title= \(self.recipeData?.title!)")
+//        print("ingredients in recipe are = \(self.recipeData?.ingredients!)")
+//        print("recipe instructions = \(self.recipeData?.instructions!)")
+        
+       
     
     
     }
@@ -109,6 +116,7 @@ class ExtractRecipe: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
     
     
     

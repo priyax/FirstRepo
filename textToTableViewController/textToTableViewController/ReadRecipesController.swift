@@ -13,10 +13,6 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
 
     var recipeToLoad: RecipeData?
     
-    //let myRecipeText = "1. Heat oven to 350°F. Grease and flour two 9-inch round baking pans. 2. Stir together sugar, flour, cocoa, baking powder, baking soda and salt in large bowl. Add eggs, milk, oil and vanilla; beat on medium speed of mixer 2 minutes. Stir in boiling water (batter will be thin). Pour batter into prepared pans.Start. 3. Bake 30 to 35 minutes or until wooden pick inserted in center comes out clean. Cool 10 minutes; remove from pans to wire racks. Cool completely. CHOCOLATE FROSTING. Makes 12 servings."
-    
-    //var myRecipeArray = ["1. Heat oven to 350°F. Grease and flour two 9-inch round baking pans.", "2. Stir together sugar, flour, cocoa, baking powder, baking soda and salt in large bowl.","Add eggs, milk, oil and vanilla; beat on medium speed of mixer 2 minutes. Stir in boiling water (batter will be thin)."]
-    
     var myRecipeArray = [String]()
     
     
@@ -31,13 +27,22 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        myRecipeArray.append(recipeToLoad!.title!)
-        
-        for i in recipeToLoad!.ingredients! {
-        myRecipeArray.append(i)
+        if let recipe = recipeToLoad {
+            if let title = recipe.title {
+                myRecipeArray.append(title)
+            }
+            if let ingredients = recipe.ingredients {
+                for i in ingredients {
+                    myRecipeArray.append(i)
+                }
+            
+            }
+            if let instructions = recipe.instructions {
+                myRecipeArray.append(instructions)
+            }
         }
         
-        myRecipeArray.append(recipeToLoad!.instructions!)
+        
         
     }
 

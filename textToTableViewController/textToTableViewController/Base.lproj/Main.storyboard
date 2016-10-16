@@ -190,7 +190,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="73"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N1e-kZ-R4H" id="RSv-Fx-Da4">
-                                            <frame key="frameInset" width="375" height="73"/>
+                                            <frame key="frameInset" width="375" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0mY-Gq-aAW" userLabel="Recipe Pic">
@@ -385,11 +385,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recipeTableViewCell" id="gMW-9k-TzV" customClass="MyCell" customModule="textToTableViewController" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recipeTableViewCell" id="gMW-9k-TzV" customClass="RecipeTableViewCell" customModule="textToTableViewController" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="313" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gMW-9k-TzV" id="1Mr-IA-0KV">
-                                            <frame key="frameInset" width="313" height="44"/>
+                                            <frame key="frameInset" width="313" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4WQ-CI-RTm" userLabel="myLabel">
@@ -424,7 +424,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Pause"/>
                                 <connections>
-                                    <action selector="pauseReading:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ga2-bJ-zRo"/>
+                                    <action selector="pauseReading:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rd4-sg-rcB"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Bj-0S-xBI" userLabel="stopReading">
@@ -439,16 +439,23 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Clipboard" id="yuy-dL-TnU">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="Vs2-Bz-ZNt"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="Cf9-Ui-eK4">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TrY-RA-gyz" userLabel="BackBtn">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="ny8-tR-AjI">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4Wc-Mk-9lC">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4Wc-Mk-9lC" userLabel="SaveBtn">
                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Save"/>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="pauseReading" destination="du7-Bt-dLI" id="LnY-gA-tgl"/>
                         <outlet property="startReading" destination="2fZ-k5-Arg" id="CMg-sa-iI2"/>
                     </connections>
                 </viewController>
@@ -549,7 +556,7 @@
             <objects>
                 <navigationController storyboardIdentifier="savedRecipesController" automaticallyAdjustsScrollViewInsets="NO" id="NVr-7C-g7C" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="WTX-JD-27c">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WTX-JD-27c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="1" green="0.41892750429999998" blue="0.37129930290000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -566,6 +573,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="LlY-JL-EwC"/>
-        <segue reference="yvw-5C-ruz"/>
+        <segue reference="EAZ-o3-BtO"/>
     </inferredMetricsTieBreakers>
 </document>
