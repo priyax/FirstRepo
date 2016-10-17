@@ -16,6 +16,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
     var myRecipeArray = [String]()
     
     
+    @IBOutlet weak var tableView: UITableView!
     
     var synthesizer = AVSpeechSynthesizer()
     
@@ -40,12 +41,25 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
             
             }
             if let instructions = recipe.instructions {
+                //Splitting text into an array of  strings
+                let instructionsArray = instructions.components(separatedBy: ".")
+                
                 myRecipeArray.append("Instructions: ")
-                myRecipeArray.append(instructions)
+                for i in instructionsArray {
+                    //Check if string in empty
+                    if i != "" {
+                    myRecipeArray.append("\(i).")
+                    }
+                
+                }
+                
             }
         }
         
+        //Make resizable cell width
         
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 60
         
     }
 
