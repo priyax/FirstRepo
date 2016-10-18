@@ -8,12 +8,12 @@
 //data that goes to backendless
 
 import UIKit
-//class Recipe: NSObject {
-//    var title :String
-//    var ingredients :[String]?
-//    var instructions :String?
-//    var recipeUrl : String
-//    var thumbnailUrl :String?
-
-//    }
+class Recipe: NSObject {
+    var objectId: String?
+    var title :String?
+    var ingredients :[String]?
+    var instructions :String?
+    var recipeUrl : String?
+    var thumbnailUrl :String?
+    }
 

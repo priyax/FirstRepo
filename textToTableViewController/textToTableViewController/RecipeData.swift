@@ -7,6 +7,7 @@
 
 import UIKit
 class RecipeData: NSObject {
+    var objectId: String?
     var title :String?
     var ingredients :[String]?
     var instructions :String?
@@ -20,7 +21,6 @@ class RecipeData: NSObject {
         self.recipeUrl = recipeUrl
         self.thumbnailUrl = thumbnailUrl
         
-       // super.init()
     }
 
 }
