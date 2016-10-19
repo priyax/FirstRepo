@@ -76,6 +76,7 @@ class BackendlessManager {
                 print("User failed to login: \(fault)")
                 error((fault?.message)!)
             })
+     
     }
     
     func logoutUser(completion: @escaping () -> (), error: @escaping (String) -> ()) {
@@ -102,11 +103,47 @@ class BackendlessManager {
         }
     }
     
-    func saveRecipe(recipeData: RecipeData,completion: @escaping () -> (), error: @escaping () -> ())  {
+    func saveRecipe(recipeData: RecipeData,completion: @escaping () -> (), error: @escaping (String) -> ())  {
         if recipeData.objectId == nil {
-            
+           
+            backendless.data.save(recipeData,
+                                  response: {(result: Any!) -> Void in
+                                    print("Recipe has been saved")
+                                    completion()
+                                    },
+                                  error: { (fault: Fault?) -> Void in
+                                    print("Recipe failed to save\(fault)")
+                                    error((fault?.message)!)
+                                    })
             
         
+        }
+        else {
+            
+            //
+            // Update the existing Recipe
+            //
+            
+            let dataStore = backendless.persistenceService.of(RecipeData.ofClass())
+            
+            dataStore?.findID(recipeData.objectId,
+                              
+                              response: { (recipeData: Any?) -> Void in
+                                        self.backendless.data.save(recipeData,
+                                                               response: {(result: Any!) -> Void in
+                                                                print("Recipe has been saved")
+                                                                completion()
+                                                                },
+                                                               error: { (fault: Fault?) -> Void in
+                                                                print("Recipe failed to save\(fault)")
+                                                                error((fault?.message)!)
+                                                                })
+                                        },
+                              error: { (fault: Fault?) -> Void in
+                                print("Failed to find Recipe: \(fault)")
+                                error((fault?.message)!)
+
+                                })
         }
     }
 

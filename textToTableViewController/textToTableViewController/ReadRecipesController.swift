@@ -13,6 +13,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
 
     var recipeToLoad: RecipeData?
     
+    
     var myRecipeArray = [String]()
     
     
@@ -60,6 +61,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60
+    
         
     }
 
@@ -96,6 +98,21 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
     @IBAction func stopReading(_ sender: UIButton) {
         
         synthesizer.stopSpeaking(at: AVSpeechBoundary.word)     }
+    
+    @IBAction func editRecipe(_ sender: UIButton) {
+        
+        for j in 0...tableView.numberOfRows(inSection: 0)-1
+        {
+            let cell = tableView.cellForRow(at: IndexPath(row: j, section: 0)) as! RecipeTableViewCell
+            cell.myTextField.isEnabled = true
+            
+        }
+    
+    }
+    
+    
+  
+    
     
     @IBAction func backBtn(_ sender: UIButton) {
         navigationController!.popViewController(animated: true)
@@ -147,8 +164,9 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeTableViewCell", for: indexPath) as! RecipeTableViewCell
         
-        cell.myLabel.text = myRecipeArray[(indexPath as NSIndexPath).row]
+        cell.myTextField.text = myRecipeArray[(indexPath as NSIndexPath).row]
         
+        cell.myTextField.isEnabled = false
         return cell
     }
     
