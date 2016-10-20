@@ -8,11 +8,11 @@
 
 import UIKit
 
-class RecipeTableViewCell: UITableViewCell {
+class RecipeTableViewCell: UITableViewCell, UITextFieldDelegate {
 
    
     @IBOutlet weak var myTextField: UITextField!
-   // @IBOutlet weak var myLabel: UILabel!
+   
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,5 +23,18 @@ class RecipeTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+//    (BOOL)textFieldShouldReturn:(UITextField *)textField {
+//    [textField resignFirstResponder];
+//    return NO;
+//    }
+    
+    // Method gets called when the keyboard return key pressed
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("textFieldShouldReturn")
+        
+        myTextField.resignFirstResponder()
+        
+        return true
+    }
+    
 }

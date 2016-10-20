@@ -13,9 +13,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
 
     var recipeToLoad: RecipeData?
     
-    
-  //  var myRecipeArray = [String]()
-    
+   
     struct myRecipeStruct {
         var recipeName: String
         var recipePart: RecipePart
@@ -44,13 +42,13 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         
         if let recipe = recipeToLoad {
             if let title = recipe.title {
-   //             myRecipeArray.append("Recipe for \(title)")
+  
                 myRecipeStructArray.append(myRecipeStruct(recipeName: title, recipePart: RecipePart.title))
             }
             if let ingredients = recipe.ingredients {
-//                myRecipeArray.append("The Ingredients required are: ")
+
                 for i in ingredients {
-  //                  myRecipeArray.append(i)
+ 
                 myRecipeStructArray.append(myRecipeStruct(recipeName: i, recipePart: RecipePart.ingredients))
                 }
             
@@ -58,7 +56,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
             if let instructions = recipe.instructions {
                 for i in instructions {
                     //Check if string in empty
-                    if i != "" {
+                    if !i.isEmpty  {
   //                      myRecipeArray.append("\(i).")
                         myRecipeStructArray.append(myRecipeStruct(recipeName: i, recipePart: RecipePart.instructions))
                     }
@@ -110,18 +108,23 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         synthesizer.stopSpeaking(at: AVSpeechBoundary.word)     }
     
     @IBAction func editRecipe(_ sender: UIButton) {
-        
-        for j in 0...tableView.numberOfRows(inSection: 0)-1
-        {
-            let cell = tableView.cellForRow(at: IndexPath(row: j, section: 0)) as! RecipeTableViewCell
+ //       print("TableView Section = \(tableView.numberOfRows(inSection: 0))")
+//        for j in 0...tableView.numberOfRows(inSection: 0) - 1
+//        {
+//            print(j)
+//            let cell = tableView.cellForRow(at: IndexPath(row: j, section: 0)) as! RecipeTableViewCell
+//            cell.myTextField.isEnabled = true
+//            
+//        }
+        print("Number of visible cells = \(tableView.visibleCells.count)")
+        for j in 0...tableView.visibleCells.count - 1 {
+        print("Count j = \(j)")
+        let cell = tableView.visibleCells[j] as! RecipeTableViewCell
             cell.myTextField.isEnabled = true
             
         }
     
     }
-    
-    
-  
     
     
     @IBAction func backBtn(_ sender: UIButton) {
@@ -174,8 +177,8 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeTableViewCell", for: indexPath) as! RecipeTableViewCell
         
-        cell.myTextField.text = myRecipeStructArray[(indexPath as NSIndexPath).row].recipeName
-        
+        cell.myTextField.text = myRecipeStructArray[(indexPath as IndexPath).row].recipeName
+        print("Row Number = \((indexPath as IndexPath).row)")
         cell.myTextField.isEnabled = false
         return cell
     }
