@@ -10,11 +10,11 @@ class RecipeData: NSObject {
     var objectId: String?
     var title :String?
     var ingredients :[String]?
-    var instructions :String?
+    var instructions :[String]?
     var recipeUrl : String?
     var thumbnailUrl :String?
 
-    init(title: String?, ingredients: [String]?, instructions: String?, recipeUrl: String?, thumbnailUrl: String?) {
+    init(title: String?, ingredients: [String]?, instructions: [String]?, recipeUrl: String?, thumbnailUrl: String?) {
         self.title = title
         self.ingredients = ingredients
         self.instructions = instructions

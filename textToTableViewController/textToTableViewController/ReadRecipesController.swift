@@ -14,7 +14,19 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
     var recipeToLoad: RecipeData?
     
     
-    var myRecipeArray = [String]()
+  //  var myRecipeArray = [String]()
+    
+    struct myRecipeStruct {
+        var recipeName: String
+        var recipePart: RecipePart
+    }
+    
+    enum RecipePart {
+        case title
+        case ingredients
+        case instructions
+    }
+    var myRecipeStructArray = [myRecipeStruct]()
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -32,29 +44,27 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         
         if let recipe = recipeToLoad {
             if let title = recipe.title {
-                myRecipeArray.append("Recipe for \(title)")
+   //             myRecipeArray.append("Recipe for \(title)")
+                myRecipeStructArray.append(myRecipeStruct(recipeName: title, recipePart: RecipePart.title))
             }
             if let ingredients = recipe.ingredients {
-                myRecipeArray.append("The Ingredients required are: ")
+//                myRecipeArray.append("The Ingredients required are: ")
                 for i in ingredients {
-                    myRecipeArray.append(i)
+  //                  myRecipeArray.append(i)
+                myRecipeStructArray.append(myRecipeStruct(recipeName: i, recipePart: RecipePart.ingredients))
                 }
             
             }
             if let instructions = recipe.instructions {
-                //Splitting text into an array of  strings
-                let instructionsArray = instructions.components(separatedBy: ".")
-                
-                myRecipeArray.append("Instructions: ")
-                for i in instructionsArray {
+                for i in instructions {
                     //Check if string in empty
                     if i != "" {
-                    myRecipeArray.append("\(i).")
+  //                      myRecipeArray.append("\(i).")
+                        myRecipeStructArray.append(myRecipeStruct(recipeName: i, recipePart: RecipePart.instructions))
                     }
-                
                 }
-                
             }
+            
         }
         
         //Make resizable cell width
@@ -78,9 +88,9 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         synthesizer.continueSpeaking()
         
         } else {
-        for speechIndex in myRecipeArray {
-            print(speechIndex)
-        callSpeechSynthesizer(step: speechIndex)
+            for recipeStruct in myRecipeStructArray {
+            print(recipeStruct.recipeName)
+        callSpeechSynthesizer(step: recipeStruct.recipeName)
         }
         }
     }
@@ -156,7 +166,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
     // From UITableViewDataSource protocol.
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return myRecipeArray.count
+        return myRecipeStructArray.count
     }
     
     // From UITableViewDataSource protocol.
@@ -164,7 +174,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeTableViewCell", for: indexPath) as! RecipeTableViewCell
         
-        cell.myTextField.text = myRecipeArray[(indexPath as NSIndexPath).row]
+        cell.myTextField.text = myRecipeStructArray[(indexPath as NSIndexPath).row].recipeName
         
         cell.myTextField.isEnabled = false
         return cell

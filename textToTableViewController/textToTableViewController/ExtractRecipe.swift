@@ -85,7 +85,11 @@ class ExtractRecipe: UIViewController {
                 }
             }
            
-           let instructions = json.dictionaryValue["text"]?.stringValue
+           let instructionsText = json.dictionaryValue["text"]?.stringValue
+            
+            //Change instructions into an array of strings
+            let instructions = instructionsText?.components(separatedBy: ".")
+            
            let thumbnailUrl = json.dictionaryValue["imageUrls"]?.stringValue
            
             
