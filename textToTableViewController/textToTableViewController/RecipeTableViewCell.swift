@@ -33,8 +33,10 @@ class RecipeTableViewCell: UITableViewCell, UITextFieldDelegate {
         print("textFieldShouldReturn")
         
         myTextField.resignFirstResponder()
+        //TODO Everytime sometime types into the text and hits return key the data has to be saved
         
         return true
     }
+    
     
 }

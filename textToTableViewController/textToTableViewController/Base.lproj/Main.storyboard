@@ -173,7 +173,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myRecipesCell" rowHeight="100" id="N1e-kZ-R4H">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="savedRecipesCell" rowHeight="100" id="N1e-kZ-R4H" userLabel="savedRecipesCell" customClass="SavedRecipesTableViewCell" customModule="textToTableViewController" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N1e-kZ-R4H" id="RSv-Fx-Da4">
@@ -217,10 +217,17 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="RecipeTitle" destination="A0n-7R-OrV" id="vZ1-QN-MpK"/>
+                                            <outlet property="recipePic" destination="0mY-Gq-aAW" id="Bne-Su-5el"/>
+                                            <outlet property="recipeUrl" destination="Df2-Ta-k6E" id="IYa-37-VrY"/>
                                             <segue destination="BYZ-38-t0r" kind="show" identifier="gotoReadRecipesFromTableVC" id="Rk5-dv-wPM"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Lvl-ak-fbP" id="0GJ-z7-2UC"/>
+                                    <outlet property="delegate" destination="Lvl-ak-fbP" id="8ur-o8-yoM"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -534,9 +541,11 @@
                         <outlet property="pauseReading" destination="du7-Bt-dLI" id="LnY-gA-tgl"/>
                         <outlet property="startReading" destination="2fZ-k5-Arg" id="CMg-sa-iI2"/>
                         <outlet property="tableView" destination="Zjn-Zw-yqP" id="3bZ-As-CwD"/>
+                        <segue destination="Qlu-hN-jze" kind="unwind" unwindAction="unwindToSavedRecipes:" id="OFr-Jf-vlg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="Qlu-hN-jze" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1509.5999999999999" y="945.87706146926541"/>
         </scene>

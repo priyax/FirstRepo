@@ -8,19 +8,22 @@
 
 import UIKit
 
-class SavedRecipesController: UIViewController {
+class SavedRecipesController: UITableViewController {
 
+    //MARK: Properties
+    
+    var recipes: [RecipeData]()
+    let backendless = Backendless.sharedInstance()!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        //backendless.loadRecipes
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 //Alert view to navigate to website or manual input of recipe
     
     @IBAction func addRecipe(_ sender: UIButton) {
@@ -58,6 +61,105 @@ class SavedRecipesController: UIViewController {
             print("Show the Action Sheet!")
         }
     }
+    
+    
+    ///////
+    // MARK: - Table view data source
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return recipes.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        // Table view cells are reused and should be dequeued using a cell identifier.
+        let cellIdentifier = "savedRecipesCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SavedRecipesTableViewCell
+        
+        // Fetches the appropriate meal for the data source layout.
+        let recipe = recipes[(indexPath as NSIndexPath).row]
+        
+        cell.RecipeTitle.text = recipe.title
+        cell.recipeUrl.text = recipe.recipeUrl
+        
+        cell.recipePic.image = nil
+        
+        if recipe.thumbnailUrl != nil {
+            loadImageFromUrl(cell: cell, thumbnailUrl: recipe.thumbnailUrl!)
+        }
+     
+        
+        return cell
+    }
+    
+    
+    
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "gotoReadRecipesFromTableVC" {
+            
+            let readRecipesTableViewController = segue.destination as! ReadRecipesController
+            
+            // Get the cell that generated this segue.
+            if let selectedRecipesCell = sender as? RecipeTableViewCell {
+                
+                let indexPath = tableView.indexPath(for: selectedRecipesCell)!
+                let selectedRecipe = recipes[(indexPath as NSIndexPath).row]
+                readRecipesTableViewController.recipeToLoad = selectedRecipe
+            }
+            
+        }
+    }
 
+    
+    
+///////////
+    
+    func loadImageFromUrl(cell: RecipeTableViewCell, thumbnailUrl: String)  {
+    let url = URL(string: thumbnailUrl)
+        let session = URLSession.shared
+        let task = session.dataTask(with: url, completionHandler: { (data,response,error) in
+            if error == nil {
+                do {
+                
+                let data = try Data(contentsOf: url, options: [])
+                    DispatchQueue.main.sync {
+                        
+                        cell.r
+                    }
+                
+                }
+            } })
+    }
+    
+    
 
+    @IBAction func unwindToSavedRecipes(_ sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? ReadRecipesController, let recipe = sourceViewController.recipeData {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                
+                // Update an existing meal.
+                recipes[(selectedIndexPath as NSIndexPath).row] = recipe
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+                
+            } else {
+                
+                // Add a new meal.
+                let newIndexPath = IndexPath(row: recipes.count, section: 0)
+                recipes.append(recipe)
+                tableView.insertRows(at: [newIndexPath], with: .bottom)
+            }
+            
+        
+        }
+        
+    
+    }
 }

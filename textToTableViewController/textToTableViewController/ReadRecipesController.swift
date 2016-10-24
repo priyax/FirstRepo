@@ -157,8 +157,28 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
     }
     @IBAction func saveBtn(_ sender: UIButton) {
         
+        var title :String?
+        var ingredients :[String]?
+        var instructions :[String]?
+        
+        print("TableView Section = \(tableView.numberOfRows(inSection: 0))")
         
         
+                for j in 0...tableView.numberOfRows(inSection: 0) - 1
+                {
+                    print(j)
+                   
+                    switch myRecipeStructArray[j].recipePart {
+                    case .title: title = myRecipeStructArray[j].recipeName
+                    case .ingredients: ingredients?.append(myRecipeStructArray[j].recipeName)
+                    case .instructions: instructions?.append(myRecipeStructArray[j].recipeName)
+                       
+                    }
+                   
+                }
+        
+        var recipeToSave = RecipeData(title: title, ingredients: ingredients, instructions: instructions, recipeUrl: recipeToLoad?.recipeUrl, thumbnailUrl: recipeToLoad?.thumbnailUrl)
+//        BackendlessManager.sharedInstance.saveRecipe(recipeData: recipeToSave, completion: <#T##() -> ()#>, error: <#T##(String) -> ()#>)
     }
     // From UITableViewDataSource protocol.
     func numberOfSections(in tableView: UITableView) -> Int {
