@@ -12,7 +12,7 @@ class SavedRecipesController: UITableViewController {
 
     //MARK: Properties
     
-    var recipes: [RecipeData]()
+    var recipes = [RecipeData]()
     let backendless = Backendless.sharedInstance()!
     
     override func viewDidLoad() {
@@ -122,27 +122,32 @@ class SavedRecipesController: UITableViewController {
     
 ///////////
     
-    func loadImageFromUrl(cell: RecipeTableViewCell, thumbnailUrl: String)  {
+    func loadImageFromUrl(cell: SavedRecipesTableViewCell, thumbnailUrl: String)  {
     let url = URL(string: thumbnailUrl)
         let session = URLSession.shared
-        let task = session.dataTask(with: url, completionHandler: { (data,response,error) in
+        let task = session.dataTask(with: url!, completionHandler: { (data,response,error) in
             if error == nil {
                 do {
                 
-                let data = try Data(contentsOf: url, options: [])
+                let data = try Data(contentsOf: url!, options: [])
                     DispatchQueue.main.sync {
+                        cell.recipePic.image = UIImage(data: data)
                         
-                        cell.r
                     }
-                
+                }catch
+                { print("NSData Error \(error)")
                 }
-            } })
+                
+            } else { print("NSURLSession error: \(error)")
+            }
+             })
+        task.resume()
     }
     
     
 
     @IBAction func unwindToSavedRecipes(_ sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.source as? ReadRecipesController, let recipe = sourceViewController.recipeData {
+        if let sourceViewController = sender.source as? ReadRecipesController, let recipe = sourceViewController.recipeToSave {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 
                 // Update an existing meal.
