@@ -14,13 +14,13 @@ class RecipeData: NSObject {
     var recipeUrl : String?
     var thumbnailUrl :String?
 
-    init(title: String?, ingredients: [String]?, instructions: [String]?, recipeUrl: String?, thumbnailUrl: String?) {
+    init?(title: String?, ingredients: [String]?, instructions: [String]?, recipeUrl: String?, thumbnailUrl: String?) {
         self.title = title
         self.ingredients = ingredients
         self.instructions = instructions
         self.recipeUrl = recipeUrl
         self.thumbnailUrl = thumbnailUrl
-        
+        super.init()
     }
 
 }

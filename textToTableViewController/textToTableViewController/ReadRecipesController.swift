@@ -13,6 +13,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
 
     var recipeToLoad: RecipeData?
     
+    @IBOutlet weak var saveBtn: UIButton!
    
     struct myRecipeStruct {
         var recipeName: String
@@ -137,7 +138,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         print(utterance)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         
-    print(utterance.voice?.language)
+   // print(utterance.voice?.language)
         
         do{
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
@@ -157,12 +158,12 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
     }
     @IBAction func saveBtn(_ sender: UIButton) {
         
+        saveBtn.isEnabled = false
         var title :String?
         var ingredients :[String]?
         var instructions :[String]?
         
         print("TableView Section = \(tableView.numberOfRows(inSection: 0))")
-        
         
                 for j in 0...tableView.numberOfRows(inSection: 0) - 1
                 {
@@ -177,8 +178,28 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
                    
                 }
         
-        var recipeToSave = RecipeData(title: title, ingredients: ingredients, instructions: instructions, recipeUrl: recipeToLoad?.recipeUrl, thumbnailUrl: recipeToLoad?.thumbnailUrl)
-        BackendlessManager.sharedInstance.saveRecipe(recipeData: recipeToSave, completion: <#T##() -> ()#>, error: <#T##(String) -> ()#>)
+      
+        recipeToLoad?.title = title
+        recipeToLoad?.ingredients = ingredients
+        recipeToLoad?.instructions = instructions
+        BackendlessManager.sharedInstance.saveRecipe(recipeData: recipeToLoad!,
+        completion: {
+             self.performSegue(withIdentifier: "unwindToSavedRecipes", sender: self)
+            
+            }, error: {
+                // It was NOT saved to the database! - tell the user and DON'T call performSegue.
+                let alertController = UIAlertController(title: "Save Error",
+                                                        message: "Oops! We couldn't save your Meal at this time.",
+                                                        preferredStyle: .alert)
+                
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertController.addAction(okAction)
+                
+                self.present(alertController, animated: true, completion: nil)
+                
+                self.saveBtn.isEnabled = true
+
+        })
     }
     // From UITableViewDataSource protocol.
     func numberOfSections(in tableView: UITableView) -> Int {

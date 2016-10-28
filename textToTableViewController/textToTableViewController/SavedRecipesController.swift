@@ -8,10 +8,11 @@
 
 import UIKit
 
-class SavedRecipesController: UITableViewController {
+class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewDataSource {
 
     //MARK: Properties
     
+    @IBOutlet weak var tableView: UITableView!
     var recipes = [RecipeData]()
     let backendless = Backendless.sharedInstance()!
     
@@ -66,16 +67,16 @@ class SavedRecipesController: UITableViewController {
     ///////
     // MARK: - Table view data source
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return recipes.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "savedRecipesCell"
@@ -147,7 +148,7 @@ class SavedRecipesController: UITableViewController {
     
 
     @IBAction func unwindToSavedRecipes(_ sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.source as? ReadRecipesController, let recipe = sourceViewController.recipeToSave {
+        if let sourceViewController = sender.source as? ReadRecipesController, let recipe = sourceViewController.recipeToLoad {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 
                 // Update an existing meal.

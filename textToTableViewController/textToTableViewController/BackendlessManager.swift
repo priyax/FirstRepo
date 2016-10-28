@@ -103,7 +103,7 @@ class BackendlessManager {
         }
     }
     
-    func saveRecipe(recipeData: RecipeData,completion: @escaping () -> (), error: @escaping (String) -> ())  {
+    func saveRecipe(recipeData: RecipeData, completion: @escaping () -> (), error: @escaping () -> ())  {
         if recipeData.objectId == nil {
            
             backendless.data.save(recipeData,
@@ -113,7 +113,7 @@ class BackendlessManager {
                                     },
                                   error: { (fault: Fault?) -> Void in
                                     print("Recipe failed to save\(fault)")
-                                    error((fault?.message)!)
+                                    error()
                                     })
             
         
@@ -128,22 +128,22 @@ class BackendlessManager {
             
             dataStore?.findID(recipeData.objectId,
                               
-                              response: { (recipeData: Any?) -> Void in
-                                        self.backendless.data.save(recipeData,
-                                                               response: {(result: Any!) -> Void in
-                                                                print("Recipe has been saved")
-                                                                completion()
-                                                                },
-                                                               error: { (fault: Fault?) -> Void in
-                                                                print("Recipe failed to save\(fault)")
-                                                                error((fault?.message)!)
-                                                                })
-                                        },
-                              error: { (fault: Fault?) -> Void in
-                                print("Failed to find Recipe: \(fault)")
-                                error((fault?.message)!)
+          response: { (recipeData: Any?) -> Void in
+                    self.backendless.data.save(recipeData,
+                                   response: {(result: Any!) -> Void in
+                                    print("Recipe has been saved")
+                                    completion()
+                                    },
+                                   error: { (fault: Fault?) -> Void in
+                                    print("Recipe failed to save\(fault)")
+                                    error()
+                                    })
+                    },
+          error: { (fault: Fault?) -> Void in
+            print("Failed to find Recipe: \(fault)")
+            error()
 
-                                })
+            })
         }
     }
 

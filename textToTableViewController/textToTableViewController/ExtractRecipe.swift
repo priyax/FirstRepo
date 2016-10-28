@@ -61,10 +61,10 @@ class ExtractRecipe: UIViewController {
          Alamofire.request("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract", parameters: parameters, encoding: URLEncoding.default, headers: headers).responseString { response in
          
          // The GET request for the JSON data has returned.
-         print("Response . request \(response.request)")  // original URL request
-         print(response.response) // URL response
-         print(response.data)     // server data
-         print(response.result)   // result of response serialization
+//         print("Response . request \(response.request)")  // original URL request
+//         print(response.response) // URL response
+//         print(response.data)     // server data
+//         print(response.result)   // result of response serialization
          
          if let jsonString = response.result.value {
             
