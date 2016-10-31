@@ -16,7 +16,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var saveBtn: UIButton!
    
     struct myRecipeStruct {
-        var recipeName: String
+        var recipeName: String?
         var recipePart: RecipePart
     }
     
@@ -39,7 +39,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // Convert recipe data from a RecipeData Object to an array of myRecipeStruct type data
         
         if let recipe = recipeToLoad {
             if let title = recipe.title {
@@ -88,8 +88,8 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         
         } else {
             for recipeStruct in myRecipeStructArray {
-            print(recipeStruct.recipeName)
-        callSpeechSynthesizer(step: recipeStruct.recipeName)
+            print(recipeStruct.recipeName!)
+        callSpeechSynthesizer(step: recipeStruct.recipeName!) //TODO how to make this an optional call
         }
         }
     }
@@ -159,37 +159,48 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
     @IBAction func saveBtn(_ sender: UIButton) {
         
         saveBtn.isEnabled = false
-        var title :String?
-        var ingredients :[String]?
-        var instructions :[String]?
+        var titleToSave = String()
+        var ingredientsToSave = [String]()
+        var instructionsToSave = [String]()
         
         print("TableView Section = \(tableView.numberOfRows(inSection: 0))")
         
-                for j in 0...tableView.numberOfRows(inSection: 0) - 1
-                {
-                    print(j)
-                   
-                    switch myRecipeStructArray[j].recipePart {
-                    case .title: title = myRecipeStructArray[j].recipeName
-                    case .ingredients: ingredients?.append(myRecipeStructArray[j].recipeName)
-                    case .instructions: instructions?.append(myRecipeStructArray[j].recipeName)
-                       
-                    }
-                   
-                }
+        for i in myRecipeStructArray {
+            switch i.recipePart {
+            case .title: if let t = i.recipeName {
+                                    titleToSave = t
+                                 print(t)
+                                }
+            case .ingredients : if let r = i.recipeName {
+                                ingredientsToSave.append(r)
+                                print(r) }
+                
+                
+            case .instructions: if let s = i.recipeName {
+                                instructionsToSave.append(s)
+                                print(s) }
+                
+            }
+        }
+        
         
       
-        recipeToLoad?.title = title
-        recipeToLoad?.ingredients = ingredients
-        recipeToLoad?.instructions = instructions
+        recipeToLoad?.title = titleToSave
+        recipeToLoad?.ingredients = ingredientsToSave
+        recipeToLoad?.instructions = instructionsToSave
+        print(" \(recipeToLoad?.title)")
+        print("\(recipeToLoad?.ingredients)")
+        print("\(recipeToLoad?.instructions)")
         BackendlessManager.sharedInstance.saveRecipe(recipeData: recipeToLoad!,
         completion: {
+            self.saveBtn.isEnabled = true
+            print("Segue to Table of Saved Recipes after data is saved in BE")
              self.performSegue(withIdentifier: "unwindToSavedRecipes", sender: self)
             
             }, error: {
                 // It was NOT saved to the database! - tell the user and DON'T call performSegue.
                 let alertController = UIAlertController(title: "Save Error",
-                                                        message: "Oops! We couldn't save your Meal at this time.",
+                                                        message: "Oops! We couldn't save your Recipe at this time.",
                                                         preferredStyle: .alert)
                 
                 let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)

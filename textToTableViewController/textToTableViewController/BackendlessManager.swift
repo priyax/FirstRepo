@@ -104,10 +104,14 @@ class BackendlessManager {
     }
     
     func saveRecipe(recipeData: RecipeData, completion: @escaping () -> (), error: @escaping () -> ())  {
-        if recipeData.objectId == nil {
+        let recipeToSave = recipeData
+        print("\(recipeToSave.title)")
+        let dataStore = backendless.data.of(RecipeData.ofClass())
+        if recipeToSave.objectId == nil {
            
-            backendless.data.save(recipeData,
+           dataStore?.save(recipeToSave,
                                   response: {(result: Any!) -> Void in
+                                    
                                     print("Recipe has been saved")
                                     completion()
                                     },
@@ -126,10 +130,11 @@ class BackendlessManager {
             
             let dataStore = backendless.persistenceService.of(RecipeData.ofClass())
             
-            dataStore?.findID(recipeData.objectId,
+            dataStore?.findID(recipeToSave.objectId,
                               
-          response: { (recipeData: Any?) -> Void in
-                    self.backendless.data.save(recipeData,
+          response: { (result: Any?) -> Void in
+                    let foundRecipe = result as! RecipeData
+                    self.backendless.data.save(foundRecipe,
                                    response: {(result: Any!) -> Void in
                                     print("Recipe has been saved")
                                     completion()
