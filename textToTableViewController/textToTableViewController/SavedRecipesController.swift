@@ -88,13 +88,17 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
         let recipe = recipes[(indexPath as NSIndexPath).row]
         
         cell.RecipeTitle.text = recipe.title
-        cell.recipeUrl.text = recipe.recipeUrl
+       // cell.recipeUrl.text = recipe.recipeUrl
         
         cell.recipePic.image = nil
         
-        //if recipe.thumbnailUrl != nil {
-         //   loadImageFromUrl(cell: cell, thumbnailUrl: recipe.thumbnailUrl!)
-       // }
+        print("recipe tmage!!! \(recipe.thumbnailUrl )")
+        if let thumbnailUrl = recipe.thumbnailUrl {
+            if thumbnailUrl != "" {
+            loadImageFromUrl(cell: cell, thumbnailUrl: thumbnailUrl)
+            }
+            
+        }
      
         
         return cell
@@ -111,11 +115,12 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
             let readRecipesTableViewController = segue.destination as! ReadRecipesController
             
             // Get the cell that generated this segue.
-            if let selectedRecipesCell = sender as? RecipeTableViewCell {
+            if let selectedRecipesCell = sender as? SavedRecipesTableViewCell {
                 
                 let indexPath = tableView.indexPath(for: selectedRecipesCell)!
                 let selectedRecipe = recipes[(indexPath as NSIndexPath).row]
                 readRecipesTableViewController.recipeToLoad = selectedRecipe
+                print("Its coming here!!! \(selectedRecipe.title)")
             }
             
         }
@@ -127,6 +132,7 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
     
     func loadImageFromUrl(cell: SavedRecipesTableViewCell, thumbnailUrl: String)  {
     let url = URL(string: thumbnailUrl)
+        print("URL!!!!!\(url)")
         let session = URLSession.shared
         let task = session.dataTask(with: url!, completionHandler: { (data,response,error) in
             if error == nil {

@@ -185,10 +185,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="73" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SQd-HB-T1g">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SQd-HB-T1g">
                                 <rect key="frame" x="0.0" y="104" width="375" height="563"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="0.39525862068965517" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="savedRecipesCell" rowHeight="100" id="N1e-kZ-R4H" userLabel="savedRecipesCell" customClass="SavedRecipesTableViewCell" customModule="textToTableViewController" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
@@ -204,42 +204,31 @@
                                                         <constraint firstAttribute="width" constant="75" id="bja-O2-ofp"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0n-7R-OrV" userLabel="Title">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0n-7R-OrV" userLabel="Title">
                                                     <rect key="frame" x="93" y="13" width="269" height="40"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="aWB-mD-bnw"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Df2-Ta-k6E" userLabel="Url">
-                                                    <rect key="frame" x="93" y="58" width="269" height="20"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="Alb-e2-MJj"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="Df2-Ta-k6E" firstAttribute="leading" secondItem="0mY-Gq-aAW" secondAttribute="trailing" constant="5" id="8qv-Es-t7Q"/>
                                                 <constraint firstItem="0mY-Gq-aAW" firstAttribute="leading" secondItem="RSv-Fx-Da4" secondAttribute="leadingMargin" constant="5" id="FSw-tX-OcF"/>
                                                 <constraint firstItem="0mY-Gq-aAW" firstAttribute="top" secondItem="RSv-Fx-Da4" secondAttribute="topMargin" constant="5" id="LYP-QL-GtM"/>
-                                                <constraint firstItem="Df2-Ta-k6E" firstAttribute="top" secondItem="A0n-7R-OrV" secondAttribute="bottom" constant="5" id="T8d-e1-hiT"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="A0n-7R-OrV" secondAttribute="trailing" constant="5" id="Vwy-vs-3Ma"/>
                                                 <constraint firstItem="0mY-Gq-aAW" firstAttribute="top" secondItem="RSv-Fx-Da4" secondAttribute="topMargin" constant="5" id="ZbU-zN-TYy"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Df2-Ta-k6E" secondAttribute="trailing" constant="5" id="bmm-kV-on0"/>
                                                 <constraint firstItem="A0n-7R-OrV" firstAttribute="top" secondItem="RSv-Fx-Da4" secondAttribute="topMargin" constant="5" id="goj-DU-L4N"/>
                                                 <constraint firstItem="A0n-7R-OrV" firstAttribute="leading" secondItem="0mY-Gq-aAW" secondAttribute="trailing" constant="5" id="k6z-I6-RLh"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="0.40449892241379309" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="RecipeTitle" destination="A0n-7R-OrV" id="vZ1-QN-MpK"/>
                                             <outlet property="recipePic" destination="0mY-Gq-aAW" id="Bne-Su-5el"/>
-                                            <outlet property="recipeUrl" destination="Df2-Ta-k6E" id="IYa-37-VrY"/>
                                             <segue destination="BYZ-38-t0r" kind="show" identifier="gotoReadRecipesFromTableVC" id="Rk5-dv-wPM"/>
                                         </connections>
                                     </tableViewCell>
@@ -722,6 +711,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2iy-cO-Uw0"/>
-        <segue reference="EAZ-o3-BtO"/>
+        <segue reference="Rk5-dv-wPM"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -38,7 +38,7 @@ class ExtractRecipe: UIViewController {
         super.viewWillAppear(animated)
         
         // This sets the text in the middle of the Nav Bar for this View Controllers.
-        self.navigationItem.title = "Settings"
+        self.navigationItem.title = "Search Web For Recipe"
         
         
         //
@@ -141,7 +141,15 @@ class ExtractRecipe: UIViewController {
             //Change instructions into an array of strings
             let instructions = instructionsText?.components(separatedBy: ".")
             
-           let thumbnailUrl = json.dictionaryValue["imageUrls"]?.stringValue
+            //get image url
+            var thumbnailUrl = String()
+            if let imageUrls = json.dictionaryValue["imageUrls"]?.arrayValue{
+                
+                for imageUrlEntry in imageUrls {
+                     thumbnailUrl = imageUrlEntry.stringValue
+                    print("image URL!! = \(thumbnailUrl)")
+                    }
+                }
            
             
             self.recipeData = RecipeData(title: title, ingredients: ingredients, instructions: instructions, recipeUrl: recipeUrl?.absoluteString, thumbnailUrl: thumbnailUrl)
@@ -187,6 +195,7 @@ class ExtractRecipe: UIViewController {
             
             nextVC.recipeToLoad = self.recipeData
         }
+        
     }
 
 }
