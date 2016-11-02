@@ -310,30 +310,33 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" id="dzD-tL-6IN">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Wxs-Rr-SBZ">
-                                            <rect key="frame" x="16" y="5" width="50" height="30"/>
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Wxs-Rr-SBZ">
+                                            <rect key="frame" x="16" y="5" width="45" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="&lt;"/>
+                                            <size key="titleShadowOffset" width="1" height="0.0"/>
+                                            <state key="normal" title="&lt;" image="chevron_left">
+                                                <color key="titleColor" red="0.41176470588235292" green="0.31764705882352939" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
                                             <connections>
                                                 <action selector="goBack" destination="ymd-wW-pEu" eventType="touchUpInside" id="mXT-4Q-0K8"/>
                                             </connections>
                                         </button>
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="v8F-AA-GLC">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5tI-Th-xwf">
-                                            <rect key="frame" x="76" y="5" width="50" height="30"/>
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5tI-Th-xwf">
+                                            <rect key="frame" x="71" y="5" width="45" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="&gt;"/>
+                                            <state key="normal" title="&gt;" image="chevron_right"/>
                                             <connections>
                                                 <action selector="goForward" destination="ymd-wW-pEu" eventType="touchUpInside" id="bi5-G7-pmT"/>
                                             </connections>
                                         </button>
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="bal-Ng-Yqs">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2WX-dn-H4l">
-                                            <rect key="frame" x="136" y="5" width="53" height="30"/>
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2WX-dn-H4l">
+                                            <rect key="frame" x="126" y="4" width="45" height="33"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Refresh"/>
+                                            <state key="normal" title="Refresh" image="refresh"/>
                                             <connections>
                                                 <action selector="reload" destination="ymd-wW-pEu" eventType="touchUpInside" id="TBS-QK-sFA"/>
                                             </connections>
@@ -341,7 +344,7 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="0xo-LE-9VF">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Kzu-v2-qEN">
-                                            <rect key="frame" x="199" y="5" width="190" height="30"/>
+                                            <rect key="frame" x="181" y="5" width="190" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Select Recipe"/>
                                             <connections>
@@ -477,33 +480,30 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="bz3-aw-bCA"/>
                                 </connections>
                             </tableView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="UiI-Yw-9UC">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="UiI-Yw-9UC">
                                 <rect key="frame" x="46" y="607" width="283" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fZ-k5-Arg" userLabel="startReading">
-                                        <rect key="frame" x="0.0" y="0.0" width="90.5" height="60"/>
-                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
-                                        <state key="normal" title="Start">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fZ-k5-Arg" userLabel="startReading">
+                                        <rect key="frame" x="0.0" y="0.0" width="74" height="60"/>
+                                        <state key="normal" title="Start" image="playBtn">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="startReading:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Vb-Ac-8WE"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="du7-Bt-dLI" userLabel="pauseReading">
-                                        <rect key="frame" x="96.5" y="0.0" width="90" height="60"/>
-                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
-                                        <state key="normal" title="Pause ">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="du7-Bt-dLI" userLabel="pauseReading">
+                                        <rect key="frame" x="105" y="0.0" width="73" height="60"/>
+                                        <state key="normal" title="Pause " image="pauseBtn">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="pauseReading:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rd4-sg-rcB"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Bj-0S-xBI" userLabel="stopReading">
-                                        <rect key="frame" x="192.5" y="0.0" width="90.5" height="60"/>
-                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
-                                        <state key="normal" title="Stop">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Bj-0S-xBI" userLabel="stopReading">
+                                        <rect key="frame" x="209" y="0.0" width="74" height="60"/>
+                                        <state key="normal" title="Stop" image="stopBtn">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -713,6 +713,12 @@
     <resources>
         <image name="bg" width="375" height="667"/>
         <image name="bg_2" width="375" height="667"/>
+        <image name="chevron_left" width="34" height="58"/>
+        <image name="chevron_right" width="34" height="58"/>
+        <image name="pauseBtn" width="3000" height="3000"/>
+        <image name="playBtn" width="98" height="98"/>
+        <image name="refresh" width="63" height="58"/>
+        <image name="stopBtn" width="3000" height="3000"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2iy-cO-Uw0"/>

@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Alamofire
+import SwiftyJSON
 
 class BackendlessManager {
     
@@ -103,10 +105,81 @@ class BackendlessManager {
         }
     }
     
+    
+    func loadRecipes(completion: @escaping ([RecipeData]) -> ()) {
+        
+        let dataStore = backendless.persistenceService.of(RecipeForBE.ofClass())
+        
+        let dataQuery = BackendlessDataQuery()
+        // Only get the Recipes that belong to our logged in user!
+        dataQuery.whereClause = "ownerId = '\(backendless.userService.currentUser.objectId!)'"
+        
+        
+        dataStore?.find(dataQuery,
+                         
+             response: { (recipes: BackendlessCollection?) -> Void in
+                
+                print("Find attempt on all Meals has completed without error!")
+                print("Number of Meals found = \((recipes?.data.count)!)")
+                
+                var recipeData = [RecipeData]()
+                
+                for recipe in (recipes?.data)! {
+                    
+                    let recipefromBE = recipe as! RecipeForBE
+                    
+                    
+                    //Convert JSON ingredients into a string array
+                    var ingredients = [String]()
+                    if let jsonIngredientsString = recipefromBE.ingredients {
+                    
+                            for arrayEntry in JSON.parse(jsonIngredientsString).arrayValue {
+                                ingredients.append(arrayEntry.stringValue)
+                            }
+                        }
+                 //Convert JSON instructions into a string array
+                    var instructions = [String]()
+                    if let jsonInstructionsString = recipefromBE.instructions {
+                        
+                        for arrayEntry in JSON.parse(jsonInstructionsString).arrayValue {
+                            instructions.append(arrayEntry.stringValue)
+                        }
+                    }
+                    
+                    let newRecipeData = RecipeData(title: recipefromBE.title, ingredients: ingredients, instructions: instructions, recipeUrl: recipefromBE.recipeUrl, thumbnailUrl: recipefromBE.thumbnailUrl)
+                    recipeData.append(newRecipeData!)
+                    
+                    print("Recipe Id: \(recipefromBE.objectId!), Title: \(recipefromBE.title), photoUrl: \(recipefromBE.thumbnailUrl!), recipeUrl \(recipefromBE.recipeUrl), recipeInstructions \(instructions)")
+                }
+                
+                            // Whatever meals we found on the database - return them.
+                            completion(recipeData)
+        },
+                         
+                         error: { (fault: Fault?) -> Void in
+                            print("Failed to find Meal: \(fault)")
+        }
+        )
+    }
+
+    
     func saveRecipe(recipeData: RecipeData, completion: @escaping () -> (), error: @escaping () -> ())  {
-        let recipeToSave = recipeData
-        print("\(recipeToSave.title)")
-        let dataStore = backendless.data.of(RecipeData.ofClass())
+        let recipeToSave = RecipeForBE()
+        recipeToSave.title = recipeData.title
+        recipeToSave.recipeUrl = recipeData.recipeUrl
+        recipeToSave.thumbnailUrl = recipeData.thumbnailUrl
+        
+        if let recipeIng = recipeData.ingredients {
+            let ingredientsJSON = JSON(recipeIng)
+            recipeToSave.ingredients = ingredientsJSON.rawString(String.Encoding.utf8, options: [])}
+        
+        if let recipeInst = recipeData.instructions {
+            let instructionsJSON = JSON(recipeInst)
+            recipeToSave.instructions = instructionsJSON.rawString(String.Encoding.utf8, options: [])}
+       
+        
+        print("\(recipeToSave.instructions)")
+        let dataStore = backendless.data.of(RecipeForBE.ofClass())
         if recipeToSave.objectId == nil {
            
            dataStore?.save(recipeToSave,
@@ -128,12 +201,12 @@ class BackendlessManager {
             // Update the existing Recipe
             //
             
-            let dataStore = backendless.persistenceService.of(RecipeData.ofClass())
+            let dataStore = backendless.persistenceService.of(RecipeForBE.ofClass())
             
             dataStore?.findID(recipeToSave.objectId,
                               
           response: { (result: Any?) -> Void in
-                    let foundRecipe = result as! RecipeData
+                    let foundRecipe = result as! RecipeForBE
                     self.backendless.data.save(foundRecipe,
                                    response: {(result: Any!) -> Void in
                                     print("Recipe has been saved")

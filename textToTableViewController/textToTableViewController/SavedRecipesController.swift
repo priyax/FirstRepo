@@ -14,11 +14,13 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var tableView: UITableView!
     var recipes = [RecipeData]()
-    let backendless = Backendless.sharedInstance()!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //backendless.loadRecipes
+        BackendlessManager.sharedInstance.loadRecipes {recipesData in
+        self.recipes += recipesData
+            self.tableView.reloadData()}
     }
     
     override func didReceiveMemoryWarning() {
@@ -90,9 +92,9 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
         
         cell.recipePic.image = nil
         
-        if recipe.thumbnailUrl != nil {
-            loadImageFromUrl(cell: cell, thumbnailUrl: recipe.thumbnailUrl!)
-        }
+        //if recipe.thumbnailUrl != nil {
+         //   loadImageFromUrl(cell: cell, thumbnailUrl: recipe.thumbnailUrl!)
+       // }
      
         
         return cell

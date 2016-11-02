@@ -34,6 +34,57 @@ class ExtractRecipe: UIViewController {
         webView.loadRequest(requestObj);
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // This sets the text in the middle of the Nav Bar for this View Controllers.
+        self.navigationItem.title = "Settings"
+        
+        
+        //
+        // Set a custom image on the Left Side Bar Buttom item.
+        //
+        
+        // Create a UIImage from our save button art.
+        var homeBtnImage = UIImage(named: "home_icon")
+        
+        // Now, force our image to keep its original colors by setting its rendering mode
+        // to AlwaysOriginal. This will keep iOS from converting it to white.
+        homeBtnImage = homeBtnImage!.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        
+        let rightbarBtnItem = UIBarButtonItem(image: homeBtnImage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(homeBtn(_:)))
+        
+        // Finally, make Bar Buttom item on the Right-side use our Save Button Image
+        // without defaulting it to white.
+        self.navigationItem.rightBarButtonItem = rightbarBtnItem
+        
+        
+        //
+        // Set a custom image on the Right Side Bar Buttom item.
+        //
+        
+        // Create a UIImage from our back button art.
+      /*  var backBtnImage = UIImage(named: "back_btn")
+        
+        // Now, force our image to keep its original colors by setting its rendering mode
+        // to AlwaysOriginal. This will keep iOS from converting it to white.
+        backBtnImage = backBtnImage!.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        
+        let leftbarBtnItem = UIBarButtonItem(image: backBtnImage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(leftBarBtnItemPressed(_:)))
+        
+        // Finally, make Bar Buttom item on the Left-side use our Back Button Image
+        // without defaulting it to white.
+        self.navigationItem.leftBarButtonItem = leftbarBtnItem
+        
+        
+       self.navigationController?.navigationBar.setBackgroundImage(navBarBackgroundImage, forBarMetrics: .Default) */
+        
+    }
+
+    
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

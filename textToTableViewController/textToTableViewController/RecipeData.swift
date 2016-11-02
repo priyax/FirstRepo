@@ -7,7 +7,7 @@
 
 import UIKit
 class RecipeData: NSObject {
-    var objectId: String?
+    
     var title :String?
     var ingredients :[String]?
     var instructions :[String]?
