@@ -185,17 +185,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SQd-HB-T1g">
-                                <rect key="frame" x="5" y="104" width="365" height="558"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="99" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SQd-HB-T1g">
+                                <rect key="frame" x="10" y="109" width="355" height="548"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="0.39525862068965517" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="savedRecipesCell" rowHeight="100" id="N1e-kZ-R4H" userLabel="savedRecipesCell" customClass="SavedRecipesTableViewCell" customModule="textToTableViewController" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="365" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="savedRecipesCell" rowHeight="99" id="N1e-kZ-R4H" userLabel="savedRecipesCell" customClass="SavedRecipesTableViewCell" customModule="textToTableViewController" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="355" height="99"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N1e-kZ-R4H" id="RSv-Fx-Da4">
-                                            <rect key="frame" x="0.0" y="0.0" width="365" height="99"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="98"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0mY-Gq-aAW" userLabel="Recipe Pic">
@@ -206,7 +206,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0n-7R-OrV" userLabel="Title">
-                                                    <rect key="frame" x="93" y="13" width="259" height="40"/>
+                                                    <rect key="frame" x="93" y="13" width="254" height="40"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="aWB-mD-bnw"/>
@@ -226,7 +226,7 @@
                                                 <constraint firstItem="A0n-7R-OrV" firstAttribute="leading" secondItem="0mY-Gq-aAW" secondAttribute="trailing" constant="5" id="k6z-I6-RLh"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="0.40449892241379309" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="1" alpha="0.76034482758620692" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="RecipeTitle" destination="A0n-7R-OrV" id="vZ1-QN-MpK"/>
                                             <outlet property="recipePic" destination="0mY-Gq-aAW" id="Bne-Su-5el"/>
@@ -243,18 +243,27 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="tCd-DQ-H3i" firstAttribute="centerX" secondItem="T9v-gA-8cY" secondAttribute="centerX" id="35k-c1-tBZ"/>
-                            <constraint firstItem="Xkn-uh-6gh" firstAttribute="top" secondItem="SQd-HB-T1g" secondAttribute="bottom" constant="5" id="6ZF-lj-BoB"/>
-                            <constraint firstAttribute="trailing" secondItem="SQd-HB-T1g" secondAttribute="trailing" constant="5" id="O7i-q4-qG5"/>
+                            <constraint firstItem="Xkn-uh-6gh" firstAttribute="top" secondItem="SQd-HB-T1g" secondAttribute="bottom" constant="10" id="6ZF-lj-BoB"/>
+                            <constraint firstAttribute="trailing" secondItem="SQd-HB-T1g" secondAttribute="trailing" constant="10" id="O7i-q4-qG5"/>
                             <constraint firstItem="JTn-e0-rGW" firstAttribute="top" secondItem="T9v-gA-8cY" secondAttribute="top" id="QrT-t5-OVY"/>
-                            <constraint firstItem="SQd-HB-T1g" firstAttribute="top" secondItem="tCd-DQ-H3i" secondAttribute="bottom" id="ZJu-nR-2UL"/>
+                            <constraint firstItem="SQd-HB-T1g" firstAttribute="top" secondItem="tCd-DQ-H3i" secondAttribute="bottom" constant="5" id="ZJu-nR-2UL"/>
                             <constraint firstItem="tCd-DQ-H3i" firstAttribute="top" secondItem="Vcs-aV-kIQ" secondAttribute="bottom" constant="20" id="fgU-u3-k4u"/>
                             <constraint firstItem="JTn-e0-rGW" firstAttribute="leading" secondItem="T9v-gA-8cY" secondAttribute="leading" id="jze-o4-054"/>
                             <constraint firstItem="Xkn-uh-6gh" firstAttribute="top" secondItem="JTn-e0-rGW" secondAttribute="bottom" id="psQ-D8-HMJ"/>
                             <constraint firstAttribute="trailing" secondItem="JTn-e0-rGW" secondAttribute="trailing" id="sZ0-66-CvC"/>
-                            <constraint firstItem="SQd-HB-T1g" firstAttribute="leading" secondItem="T9v-gA-8cY" secondAttribute="leading" constant="5" id="sjx-aa-iYk"/>
+                            <constraint firstItem="SQd-HB-T1g" firstAttribute="leading" secondItem="T9v-gA-8cY" secondAttribute="leading" constant="10" id="sjx-aa-iYk"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Recipes" id="tOe-Hc-Ckz">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" style="plain" id="V0Z-ob-zZw">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Eu5-6S-zXR">
+                                <rect key="frame" x="16" y="9" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Edit">
+                                    <color key="titleColor" red="0.41176470590000003" green="0.31764705879999999" blue="0.27058823529999998" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="OSc-80-3OC" userLabel="Add Recipe">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="udS-P7-A8a">
                                 <rect key="frame" x="334" y="9" width="25" height="25"/>
@@ -477,10 +486,10 @@
                                 </connections>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="UiI-Yw-9UC">
-                                <rect key="frame" x="46" y="607" width="283" height="60"/>
+                                <rect key="frame" x="46" y="627" width="283" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fZ-k5-Arg" userLabel="startReading">
-                                        <rect key="frame" x="0.0" y="11.5" width="47.5" height="37"/>
+                                        <rect key="frame" x="0.0" y="1.5" width="73.5" height="37"/>
                                         <state key="normal" image="playBtn">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -489,7 +498,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="du7-Bt-dLI" userLabel="pauseReading">
-                                        <rect key="frame" x="78.5" y="11.5" width="47.5" height="37"/>
+                                        <rect key="frame" x="104.5" y="1.5" width="74" height="37"/>
                                         <state key="normal" image="pauseBtn">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -498,7 +507,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Bj-0S-xBI" userLabel="stopReading">
-                                        <rect key="frame" x="157" y="11.5" width="47.5" height="37"/>
+                                        <rect key="frame" x="209.5" y="1.5" width="73.5" height="37"/>
                                         <state key="normal" image="stopBtn">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -506,29 +515,32 @@
                                             <action selector="stopReading:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iJZ-nJ-M74"/>
                                         </connections>
                                     </button>
-                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q9j-wh-7r3">
-                                        <rect key="frame" x="235.5" y="8" width="47.5" height="44"/>
-                                        <items>
-                                            <barButtonItem title="Item" id="dlh-ex-Xlt"/>
-                                        </items>
-                                    </toolbar>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="bvJ-Rf-NwU"/>
+                                    <constraint firstAttribute="height" constant="40" id="bvJ-Rf-NwU"/>
                                 </constraints>
                             </stackView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pnf-8e-Yex">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="WhH-d4-vK7"/>
+                                </constraints>
+                                <items/>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="UiI-Yw-9UC" firstAttribute="top" secondItem="Zjn-Zw-yqP" secondAttribute="bottom" id="28Z-sb-Wdl"/>
+                            <constraint firstItem="UiI-Yw-9UC" firstAttribute="top" secondItem="Zjn-Zw-yqP" secondAttribute="bottom" constant="30" id="28Z-sb-Wdl"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="UiI-Yw-9UC" secondAttribute="bottom" id="2dE-gT-9lu"/>
+                            <constraint firstItem="pnf-8e-Yex" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="39S-xA-62p"/>
                             <constraint firstItem="Giw-1c-GjH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="6OZ-18-DQk"/>
                             <constraint firstItem="UiI-Yw-9UC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="8uS-4w-Vzw"/>
-                            <constraint firstItem="UiI-Yw-9UC" firstAttribute="top" secondItem="Zjn-Zw-yqP" secondAttribute="bottom" id="Ar3-cj-wZ5"/>
                             <constraint firstItem="Zjn-Zw-yqP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="AzE-fW-lJH"/>
                             <constraint firstAttribute="bottom" secondItem="Giw-1c-GjH" secondAttribute="bottom" constant="-64" id="Ry6-Fx-c0M"/>
+                            <constraint firstAttribute="trailing" secondItem="pnf-8e-Yex" secondAttribute="trailing" id="WXs-Fa-uBu"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pnf-8e-Yex" secondAttribute="bottom" id="cs2-id-Bjo"/>
                             <constraint firstItem="Zjn-Zw-yqP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="ks6-JR-Ukt"/>
                             <constraint firstItem="Giw-1c-GjH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ng8-SI-PBW"/>
                             <constraint firstAttribute="trailing" secondItem="Giw-1c-GjH" secondAttribute="trailing" id="nto-vX-5rU"/>
@@ -716,7 +728,7 @@
         <image name="addBtn" width="25" height="25"/>
         <image name="backBtn" width="15" height="25"/>
         <image name="bg" width="375" height="667"/>
-        <image name="bg_2" width="375" height="667"/>
+        <image name="bg_2" width="524" height="714"/>
         <image name="chevron_left" width="25" height="19"/>
         <image name="chevron_right" width="25" height="19"/>
         <image name="download" width="25" height="25"/>
@@ -730,6 +742,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2iy-cO-Uw0"/>
-        <segue reference="EAZ-o3-BtO"/>
+        <segue reference="Rk5-dv-wPM"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -149,6 +149,8 @@ class BackendlessManager {
                     let newRecipeData = RecipeData(title: recipefromBE.title, ingredients: ingredients, instructions: instructions, recipeUrl: recipefromBE.recipeUrl, thumbnailUrl: recipefromBE.thumbnailUrl)
                     recipeData.append(newRecipeData!)
                     
+                    newRecipeData?.objectId = recipefromBE.objectId
+                    
                     print("Recipe Id: \(recipefromBE.objectId!), Title: \(recipefromBE.title), photoUrl: \(recipefromBE.thumbnailUrl!), recipeUrl \(recipefromBE.recipeUrl), recipeInstructions \(instructions)")
                 }
                 
@@ -225,5 +227,26 @@ class BackendlessManager {
         }
     }
 
+    
+    func removeRecipe(recipeToRemove: RecipeData, completion: @escaping () -> (), error: @escaping () -> ()) {
+        
+        print("Remove Recipe: \(recipeToRemove.objectId!)")
+        
+        let dataStore = backendless.persistenceService.of(RecipeForBE.ofClass())
+        
+        _ = dataStore?.removeID(recipeToRemove.objectId,
+                                
+                                response: { (result: NSNumber?) -> Void in
+                                    
+                                    print("One recipe has been removed: \(result)")
+                                    completion()
+        },
+                                
+                                error: { (fault: Fault?) -> Void in
+                                    print("Failed to remove Meal: \(fault)")
+                                    error()
+        }
+        )
+    }
    
 }

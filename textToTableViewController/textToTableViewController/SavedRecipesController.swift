@@ -104,7 +104,44 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
         return cell
     }
     
-    
+    // Override to support editing the table view.
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            
+            
+                
+                // Find the MealData in the data source that we wish to delete.
+                let recipeToRemove = recipes[indexPath.row]
+                
+                BackendlessManager.sharedInstance.removeRecipe(recipeToRemove: recipeToRemove,
+                                                             
+                                                             completion: {
+                                                                
+                                                                // It was removed from the database, now delete the row from the data source.
+                                                                self.recipes.remove(at: (indexPath as NSIndexPath).row)
+                                                                tableView.deleteRows(at: [indexPath], with: .fade)
+                },
+                                                             
+                                                             error: {
+                                                                
+                                                                // It was NOT removed - tell the user and DON'T delete the row from the data source.
+                                                                let alertController = UIAlertController(title: "Remove Failed",
+                                                                                                        message: "Oops! We couldn't remove your Meal at this time.",
+                                                                                                        preferredStyle: .alert)
+                                                                
+                                                                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                                                                alertController.addAction(okAction)
+                                                                
+                                                                self.present(alertController, animated: true, completion: nil)
+                }
+                )
+                
+            
+            
+        }
+    }
+
     
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
