@@ -48,8 +48,9 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
         
         alertController.addAction(extractFromWeb)
         
-        let manualEntry = UIAlertAction(title: "Recipe from typing", style: .destructive) { action in
-            print("Discard was selected!")
+        let manualEntry = UIAlertAction(title: "Recipe from typing", style: .default) { action in
+            self.performSegue(withIdentifier: "gotoTypingRecipe", sender: self)
+            print("Typing was selected!")
         }
         
         alertController.addAction(manualEntry)
@@ -108,37 +109,37 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
+
+
+
+        // Find the MealData in the data source that we wish to delete.
+        let recipeToRemove = recipes[indexPath.row]
+
+        BackendlessManager.sharedInstance.removeRecipe(recipeToRemove: recipeToRemove,
+         
+         completion: {
             
+            // It was removed from the database, now delete the row from the data source.
+            self.recipes.remove(at: (indexPath as NSIndexPath).row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        },
+         
+         error: {
             
-                
-                // Find the MealData in the data source that we wish to delete.
-                let recipeToRemove = recipes[indexPath.row]
-                
-                BackendlessManager.sharedInstance.removeRecipe(recipeToRemove: recipeToRemove,
-                                                             
-                                                             completion: {
-                                                                
-                                                                // It was removed from the database, now delete the row from the data source.
-                                                                self.recipes.remove(at: (indexPath as NSIndexPath).row)
-                                                                tableView.deleteRows(at: [indexPath], with: .fade)
-                },
-                                                             
-                                                             error: {
-                                                                
-                                                                // It was NOT removed - tell the user and DON'T delete the row from the data source.
-                                                                let alertController = UIAlertController(title: "Remove Failed",
-                                                                                                        message: "Oops! We couldn't remove your Meal at this time.",
-                                                                                                        preferredStyle: .alert)
-                                                                
-                                                                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                                                                alertController.addAction(okAction)
-                                                                
-                                                                self.present(alertController, animated: true, completion: nil)
-                }
-                )
-                
+            // It was NOT removed - tell the user and DON'T delete the row from the data source.
+            let alertController = UIAlertController(title: "Remove Failed",
+                                                    message: "Oops! We couldn't remove your Meal at this time.",
+                                                    preferredStyle: .alert)
             
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(okAction)
             
+            self.present(alertController, animated: true, completion: nil)
+        }
+        )
+
+
+
         }
     }
 
@@ -172,21 +173,21 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
         print("URL!!!!!\(url)")
         let session = URLSession.shared
         let task = session.dataTask(with: url!, completionHandler: { (data,response,error) in
-            if error == nil {
-                do {
-                
-                let data = try Data(contentsOf: url!, options: [])
-                    DispatchQueue.main.sync {
-                        cell.recipePic.image = UIImage(data: data)
-                        
-                    }
-                }catch
-                { print("NSData Error \(error)")
+        if error == nil {
+            do {
+            
+            let data = try Data(contentsOf: url!, options: [])
+                DispatchQueue.main.sync {
+                    cell.recipePic.image = UIImage(data: data)
+                    
                 }
-                
-            } else { print("NSURLSession error: \(error)")
+            }catch
+            { print("NSData Error \(error)")
             }
-             })
+            
+        } else { print("NSURLSession error: \(error)")
+        }
+         })
         task.resume()
     }
     

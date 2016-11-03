@@ -101,14 +101,14 @@
 				014E95A31DA6B0D900874354 /* RegisterViewController.swift */,
 				014E95A51DA6B23700874354 /* ExtractRecipe.swift */,
 				015F25E61DA2C0D4006C6ED5 /* ReadRecipesController.swift */,
+				015F25F61DA2CFBB006C6ED5 /* RecipeTableViewCell.swift */,
+				0196EAA21DB141F7001EBE25 /* TypingRecipesViewController.swift */,
+				012448561DCA53AD007F17B9 /* RecipeForBE.swift */,
+				01C844ED1DBE945D009D0A52 /* SavedRecipesTableViewCell.swift */,
 				015F25E81DA2C0D4006C6ED5 /* Main.storyboard */,
 				015F25EB1DA2C0D4006C6ED5 /* Assets.xcassets */,
 				015F25ED1DA2C0D4006C6ED5 /* LaunchScreen.storyboard */,
 				015F25F01DA2C0D4006C6ED5 /* Info.plist */,
-				015F25F61DA2CFBB006C6ED5 /* RecipeTableViewCell.swift */,
-				0196EAA21DB141F7001EBE25 /* TypingRecipesViewController.swift */,
-				01C844ED1DBE945D009D0A52 /* SavedRecipesTableViewCell.swift */,
-				012448561DCA53AD007F17B9 /* RecipeForBE.swift */,
 			);
 			path = textToTableViewController;
 			sourceTree = "<group>";
