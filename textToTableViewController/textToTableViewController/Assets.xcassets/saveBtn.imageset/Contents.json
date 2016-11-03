@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "foundation-icon-fonts_2015-02-16_refresh_98_0_695145_none.png",
+      "filename" : "foundation-icon-fonts_2015-02-16_save_98_0_695145_none.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "foundation-icon-fonts_2015-02-16_refresh_98_0_695145_none@2x.png",
+      "filename" : "foundation-icon-fonts_2015-02-16_save_98_0_695145_none@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "foundation-icon-fonts_2015-02-16_refresh_98_0_695145_none@3x.png",
+      "filename" : "foundation-icon-fonts_2015-02-16_save_98_0_695145_none@3x.png",
       "scale" : "3x"
     }
   ],

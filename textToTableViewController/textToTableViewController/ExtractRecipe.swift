@@ -38,7 +38,7 @@ class ExtractRecipe: UIViewController {
         super.viewWillAppear(animated)
         
         // This sets the text in the middle of the Nav Bar for this View Controllers.
-        self.navigationItem.title = "Search Web For Recipe"
+        self.navigationItem.title = "Search For Recipe"
         
         
         //
@@ -64,20 +64,20 @@ class ExtractRecipe: UIViewController {
         //
         
         // Create a UIImage from our back button art.
-      /*  var backBtnImage = UIImage(named: "back_btn")
+       var backBtnImage = UIImage(named: "backBtn")
         
         // Now, force our image to keep its original colors by setting its rendering mode
         // to AlwaysOriginal. This will keep iOS from converting it to white.
         backBtnImage = backBtnImage!.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         
-        let leftbarBtnItem = UIBarButtonItem(image: backBtnImage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(leftBarBtnItemPressed(_:)))
+        let leftbarBtnItem = UIBarButtonItem(image: backBtnImage, style: UIBarButtonItemStyle.plain, target: self, action: #selector(backBtn(_:)))
         
         // Finally, make Bar Buttom item on the Left-side use our Back Button Image
         // without defaulting it to white.
         self.navigationItem.leftBarButtonItem = leftbarBtnItem
         
         
-       self.navigationController?.navigationBar.setBackgroundImage(navBarBackgroundImage, forBarMetrics: .Default) */
+      /* self.navigationController?.navigationBar.setBackgroundImage(navBarBackgroundImage, forBarMetrics: .Default)*/
         
     }
 
