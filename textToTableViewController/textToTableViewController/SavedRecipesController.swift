@@ -48,7 +48,7 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
         
         alertController.addAction(extractFromWeb)
         
-        let manualEntry = UIAlertAction(title: "Recipe from typing", style: .default) { action in
+        let manualEntry = UIAlertAction(title: "Recipe By Typing", style: .default) { action in
             self.performSegue(withIdentifier: "gotoTypingRecipe", sender: self)
             print("Typing was selected!")
         }

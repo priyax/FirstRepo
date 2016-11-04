@@ -139,7 +139,8 @@ class ExtractRecipe: UIViewController {
            let instructionsText = json.dictionaryValue["text"]?.stringValue
             
             //Change instructions into an array of strings
-            let instructions = instructionsText?.components(separatedBy: ".")
+            let separators = CharacterSet(charactersIn: ".\t\n\r")
+            let instructions = instructionsText?.components(separatedBy: separators)
             
             //get image url
             var thumbnailUrl = String()
@@ -162,9 +163,9 @@ class ExtractRecipe: UIViewController {
          }
          }
         
-//        print("recipe title= \(self.recipeData?.title!)")
-//        print("ingredients in recipe are = \(self.recipeData?.ingredients!)")
-//        print("recipe instructions = \(self.recipeData?.instructions!)")
+        print("recipe title= \(self.recipeData?.title!)")
+       print("ingredients in recipe are = \(self.recipeData?.ingredients!)")
+       print("recipe instructions = \(self.recipeData?.instructions!)")
         
        
     

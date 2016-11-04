@@ -54,7 +54,7 @@ class TypingRecipesViewController: UIViewController, UITextViewDelegate {
             print("Preparing to go to read Recipes view after typing!")
             let title = recipeTitle.text
             let instructions = recipeInstructions.text.components(separatedBy: ".")
-            let ingredients = recipeIngredients.text.components(separatedBy: NSCharacterSet.whitespacesAndNewlines)
+            let ingredients = recipeIngredients.text.components(separatedBy: NSCharacterSet.newlines)
             recipeEntered = RecipeData(title: title, ingredients: ingredients, instructions: instructions, recipeUrl: nil, thumbnailUrl: nil)
             
             print("title: \(recipeEntered?.title)")
