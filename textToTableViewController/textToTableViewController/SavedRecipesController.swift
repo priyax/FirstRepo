@@ -214,4 +214,20 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
         
     
     }
+    
+    @IBAction func logout(_ sender: UIButton) {
+        
+    BackendlessManager.sharedInstance.logoutUser(
+            completion: {
+            
+                self.performSegue(withIdentifier: "gotoLoginFromSavedRecipes", sender: sender)
+        },
+            
+            error: { message in
+                
+                
+                Utility.showAlert(viewController: self, title: "Logout Error", message: message)
+        })
+    }
+
 }

@@ -8,11 +8,12 @@
 
 import UIKit
 
-class RecipeTableViewCell: UITableViewCell, UITextFieldDelegate {
+class RecipeTableViewCell: UITableViewCell, UITextViewDelegate {
 
    
-    @IBOutlet weak var myTextField: UITextField!
+ //   @IBOutlet weak var myTextField: UITextField!
    
+    @IBOutlet weak var recipeTextView: UITextView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -28,15 +29,8 @@ class RecipeTableViewCell: UITableViewCell, UITextFieldDelegate {
 //    return NO;
 //    }
     
-    // Method gets called when the keyboard return key pressed
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("textFieldShouldReturn")
-        
-        myTextField.resignFirstResponder()
-        //TODO Everytime sometime types into the text and hits return key the data has to be saved
-        
-        return true
-    }
+   
+    
     
     
 }

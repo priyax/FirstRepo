@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewDataSource,AVSpeechSynthesizerDelegate {
+class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewDataSource,AVSpeechSynthesizerDelegate, UITextViewDelegate {
 
     var recipeToLoad: RecipeData?
     
@@ -68,8 +68,8 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         
         //Make resizable cell width
         
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 60
+        //tableView.rowHeight = UITableViewAutomaticDimension
+       // tableView.estimatedRowHeight = 60
     
         
     }
@@ -121,7 +121,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         for j in 0...tableView.visibleCells.count - 1 {
         print("Count j = \(j)")
         let cell = tableView.visibleCells[j] as! RecipeTableViewCell
-            cell.myTextField.isEnabled = true
+            cell.recipeTextView.isEditable = true
             
         }
     
@@ -229,9 +229,10 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeTableViewCell", for: indexPath) as! RecipeTableViewCell
         
-        cell.myTextField.text = myRecipeStructArray[(indexPath as IndexPath).row].recipeName
+        cell.recipeTextView.text = myRecipeStructArray[(indexPath as IndexPath).row].recipeName
         print("Row Number = \((indexPath as IndexPath).row)")
-        cell.myTextField.isEnabled = false
+        print("\(cell.recipeTextView.text)")
+        cell.recipeTextView.isEditable = false
         return cell
     }
     
@@ -262,6 +263,18 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         cell?.contentView.backgroundColor = UIColor.gray
             }
     
+    // Method gets called when the keyboard return key pressed
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String)-> Bool {
+        if(text == "\n")
+        {
+            view.endEditing(true)
+            return false
+        }
+        else
+        {
+            return true
+        }
+    }
    
     
 }
