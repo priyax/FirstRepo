@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TypingRecipesViewController: UIViewController, UITextViewDelegate {
+class TypingRecipesViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var recipeIngredients: UITextView!
     
@@ -20,6 +20,7 @@ class TypingRecipesViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         recipeIngredients.delegate = self
         recipeInstructions.delegate = self
+        recipeTitle.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -69,6 +70,18 @@ class TypingRecipesViewController: UIViewController, UITextViewDelegate {
         }
         
     }
+    
+    //Hide Keyboard when user touches outside keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    //Presses return key to exit keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return (true)
+    }
+
     
     // Method gets called when the keyboard return key pressed
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String)-> Bool {

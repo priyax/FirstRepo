@@ -83,4 +83,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // UITextFieldDelegate, called when editing session begins, or when keyboard displayed
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        // Create padding for textFields
+        let paddingView = UIView(frame:CGRect(x: 0, y: 0, width: 20, height: 20))
+        
+        textField.leftView = paddingView
+        textField.leftViewMode = UITextFieldViewMode.always
+        
+        if textField == emailField {
+            emailField.placeholder = "Email"
+        } else {
+            passwordField.placeholder = "Password"
+        }
+    }
 }

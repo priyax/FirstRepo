@@ -68,8 +68,8 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         
         //Make resizable cell width
         
-        //tableView.rowHeight = UITableViewAutomaticDimension
-       // tableView.estimatedRowHeight = 60
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 70
     
         
     }
@@ -233,6 +233,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         print("Row Number = \((indexPath as IndexPath).row)")
         print("\(cell.recipeTextView.text)")
         cell.recipeTextView.isEditable = false
+        cell.recipeTextView.delegate = self
         return cell
     }
     
@@ -276,6 +277,17 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
    
+    //Hide Keyboard when user touches outside keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    //Presses return key to exit keyboard
+    func textFieldShouldReturn(_ textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
+        return (true)
+    }
+
     
 }
 

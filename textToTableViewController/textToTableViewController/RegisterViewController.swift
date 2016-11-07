@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailFieldReg: UITextField!
     
@@ -70,12 +70,27 @@ class RegisterViewController: UIViewController {
         emailFieldReg.addTarget(self, action: #selector(textFieldChanged(textField:)), for: UIControlEvents.editingChanged)
         passwordFieldReg.addTarget(self, action: #selector(textFieldChanged(textField:)), for: UIControlEvents.editingChanged)
         confirmPasswordField.addTarget(self, action: #selector(textFieldChanged(textField:)), for: UIControlEvents.editingChanged)
+        self.emailFieldReg.delegate = self
+        self.passwordFieldReg.delegate = self
+        self.confirmPasswordField.delegate = self 
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //Hide Keyboard when user touches outside keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    //Presses return key to exit keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return (true)
+    }
+
     func textFieldChanged(textField: UITextField) {
         if emailFieldReg.text == "" || passwordFieldReg.text == "" || confirmPasswordField.text == "" {
             regBtn.isEnabled = false
@@ -83,6 +98,22 @@ class RegisterViewController: UIViewController {
             regBtn.isEnabled = true
         }
     }
-    
+    // UITextFieldDelegate, called when editing session begins, or when keyboard displayed
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        // Create padding for textFields
+        let paddingView = UIView(frame:CGRect(x: 0, y: 0, width: 20, height: 20))
+        
+        textField.leftView = paddingView
+        textField.leftViewMode = UITextFieldViewMode.always
+        
+        if textField == emailFieldReg {
+            emailFieldReg.placeholder = "Email"
+        } else if textField == passwordFieldReg {
+            passwordFieldReg.placeholder = "Password"
+        } else {
+            confirmPasswordField.placeholder = "Confirm password"}
+    }
+
     
 }
