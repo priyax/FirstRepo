@@ -10,7 +10,8 @@ import UIKit
 
 class RecipeTableViewCell: UITableViewCell, UITextViewDelegate {
 
-   
+    var index: Int?
+    
  //   @IBOutlet weak var myTextField: UITextField!
    
     @IBOutlet weak var recipeTextView: UITextView!

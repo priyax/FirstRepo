@@ -119,12 +119,12 @@ class ExtractRecipe: UIViewController {
          
          if let jsonString = response.result.value {
             
-            print("JSON String \(jsonString)")
+          //  print("JSON String \(jsonString)")
             let json = JSON.parse(jsonString)
             
             print("JSON  \(json)")
             let title = json.dictionaryValue["title"]?.stringValue
-            print("TITLE !!!! \(title)")
+           // print("TITLE !!!! \(title)")
             
             var ingredients = [String]()
             
@@ -141,6 +141,11 @@ class ExtractRecipe: UIViewController {
             //Change instructions into an array of strings
             let separators = CharacterSet(charactersIn: ".\t\n\r")
             let instructions = instructionsText?.components(separatedBy: separators)
+            var trimmedInstructions = [String]()
+            for i in instructions! {
+                
+                trimmedInstructions.append(i.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines))
+            }
             
             //get image url
             var thumbnailUrl = String()
@@ -148,28 +153,23 @@ class ExtractRecipe: UIViewController {
                 
                 for imageUrlEntry in imageUrls {
                      thumbnailUrl = imageUrlEntry.stringValue
-                    print("image URL!! = \(thumbnailUrl)")
+                 //   print("image URL!! = \(thumbnailUrl)")
                     }
                 }
            
             
-            self.recipeData = RecipeData(title: title, ingredients: ingredients, instructions: instructions, recipeUrl: recipeUrl?.absoluteString, thumbnailUrl: thumbnailUrl)
+            self.recipeData = RecipeData(title: title, ingredients: ingredients, instructions: trimmedInstructions, recipeUrl: recipeUrl?.absoluteString, thumbnailUrl: thumbnailUrl)
          
-            print(" TITLE IN RECIPE DATA \(self.recipeData?.title)")
+          
             
              self.performSegue(withIdentifier: "gotoReadRecipes", sender: sender)
          } else {
-         print("Failed to get a value from the response.")
+         
          }
          }
         
-        print("recipe title= \(self.recipeData?.title!)")
-       print("ingredients in recipe are = \(self.recipeData?.ingredients!)")
-       print("recipe instructions = \(self.recipeData?.instructions!)")
         
-       
-    
-    
+        
     }
     /*
     // MARK: - Navigation

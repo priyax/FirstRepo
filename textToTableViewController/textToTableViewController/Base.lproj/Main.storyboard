@@ -685,6 +685,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="editBtn" destination="Dhn-Ao-0jL" id="4kp-5u-uXf"/>
                         <outlet property="pauseReading" destination="du7-Bt-dLI" id="LnY-gA-tgl"/>
                         <outlet property="saveBtn" destination="4Wc-Mk-9lC" id="j2g-Ur-XJN"/>
                         <outlet property="startReading" destination="2fZ-k5-Arg" id="CMg-sa-iI2"/>

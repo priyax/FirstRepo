@@ -14,6 +14,8 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var tableView: UITableView!
     var recipes = [RecipeData]()
+    var searchActive : Bool = false
+    var filteredRecipes = [RecipeData]()
     
     
     override func viewDidLoad() {
@@ -79,6 +81,9 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        if(searchActive) {
+            return filteredRecipes.count
+        }
         return recipes.count
     }
     
@@ -88,22 +93,32 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
         let cellIdentifier = "savedRecipesCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SavedRecipesTableViewCell
         
-        // Fetches the appropriate meal for the data source layout.
-        let recipe = recipes[(indexPath as NSIndexPath).row]
+         cell.recipePic.image = nil
         
-        cell.RecipeTitle.text = recipe.title
-       // cell.recipeUrl.text = recipe.recipeUrl
-        
-        cell.recipePic.image = nil
-        
-        print("recipe tmage!!! \(recipe.thumbnailUrl )")
-        if let thumbnailUrl = recipe.thumbnailUrl {
-            if thumbnailUrl != "" {
-            loadImageFromUrl(cell: cell, thumbnailUrl: thumbnailUrl)
+        if(searchActive){
+            cell.RecipeTitle.text = filteredRecipes[indexPath.row].title
+            // Fetches the appropriate recipe for the data source layout.
+            let recipe = filteredRecipes[(indexPath as NSIndexPath).row]
+            if let thumbnailUrl = recipe.thumbnailUrl {
+                if thumbnailUrl != "" {
+                    loadImageFromUrl(cell: cell, thumbnailUrl: thumbnailUrl)
+                }
             }
+
             
-            
+        } else {
+            cell.RecipeTitle.text = recipes[indexPath.row].title
+            // Fetches the appropriate recipe for the data source layout.
+            let recipe = recipes[(indexPath as NSIndexPath).row]
+            if let thumbnailUrl = recipe.thumbnailUrl {
+                if thumbnailUrl != "" {
+                    loadImageFromUrl(cell: cell, thumbnailUrl: thumbnailUrl)
+                }
+            }
+
         }
+    
+       
      
         
         return cell
@@ -116,7 +131,7 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
 
 
 
-        // Find the MealData in the data source that we wish to delete.
+        // Find the Recipe Data in the data source that we wish to delete.
         let recipeToRemove = recipes[indexPath.row]
 
         BackendlessManager.sharedInstance.removeRecipe(recipeToRemove: recipeToRemove,
@@ -219,6 +234,40 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
     
     }
     
+    
+    //Search Bar
+    
+   
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true;
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+
+    
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        filteredRecipes = recipes.filter { recipe in
+            return (recipe.title?.lowercased().contains(searchText.lowercased()))!
+        }
+        if(filteredRecipes.count == 0){
+            searchActive = false;
+        } else {
+            searchActive = true;
+        }
+        tableView.reloadData()
+    }
+    
+    
     @IBAction func logout(_ sender: UIButton) {
         
         let alertController = UIAlertController(title: nil,
@@ -253,3 +302,5 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
     }
 
 }
+
+

@@ -36,6 +36,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var pauseReading: UIButton!
     
     
+    @IBOutlet weak var editBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,14 +109,16 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         
         synthesizer.stopSpeaking(at: AVSpeechBoundary.word)     }
     
+    
     @IBAction func editRecipe(_ sender: UIButton) {
        
+        editBtn.isEnabled = false
+        
         print("Number of visible cells = \(tableView.visibleCells.count)")
         for j in 0...tableView.visibleCells.count - 1 {
         print("Count j = \(j)")
         let cell = tableView.visibleCells[j] as! RecipeTableViewCell
             cell.recipeTextView.isEditable = true
-            
         }
     
     }
@@ -124,6 +127,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
     @IBAction func backBtn(_ sender: UIButton) {
         navigationController!.popViewController(animated: true)
     }
+    
     //Speech Synthesizer
     func callSpeechSynthesizer(step: String) {
         
@@ -222,7 +226,11 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeTableViewCell", for: indexPath) as! RecipeTableViewCell
         
-        cell.recipeTextView.text = myRecipeStructArray[(indexPath as IndexPath).row].recipeName
+        let index = (indexPath as IndexPath).row
+        
+        cell.index = index
+        
+        cell.recipeTextView.text = myRecipeStructArray[index].recipeName
         print("Row Number = \((indexPath as IndexPath).row)")
         print("\(cell.recipeTextView.text)")
         cell.recipeTextView.isEditable = false
@@ -281,18 +289,22 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         textView.resignFirstResponder()
         return (true)
     }
+    
+    //Update text view after editing
     func textViewDidEndEditing(_ textView: UITextView) {
         
         print("Number of rows = \(tableView.numberOfRows(inSection: 0))")
         print("Number of visible rows = \(tableView.visibleCells.count)")
-               for j in 0...tableView.visibleCells.count -  1
-                {
-                    print(j)
-                   let row = tableView.indexPathsForVisibleRows
-                   let cell = tableView.cellForRow(at: IndexPath(row: j, section: 0)) as! RecipeTableViewCell
-                   myRecipeStructArray[row!.count].recipeName = cell.recipeTextView.text
-                    
-                }
+        
+        for cell in tableView.visibleCells {
+            
+            if let cell = cell as? RecipeTableViewCell {
+                myRecipeStructArray[cell.index!].recipeName = cell.recipeTextView.text
+            }
+        }
+        
+        editBtn.isEnabled = true
+        
     }
     
 }
