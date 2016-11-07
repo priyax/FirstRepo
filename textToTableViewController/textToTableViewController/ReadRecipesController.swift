@@ -96,7 +96,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBAction func pauseReading(_ sender: UIButton) {
         if synthesizer.isSpeaking {
-            synthesizer.pauseSpeaking(at: AVSpeechBoundary.word)
+            synthesizer.pauseSpeaking(at: AVSpeechBoundary.immediate)
             print("Is PAUSED")
         }
     
@@ -109,14 +109,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         synthesizer.stopSpeaking(at: AVSpeechBoundary.word)     }
     
     @IBAction func editRecipe(_ sender: UIButton) {
- //       print("TableView Section = \(tableView.numberOfRows(inSection: 0))")
-//        for j in 0...tableView.numberOfRows(inSection: 0) - 1
-//        {
-//            print(j)
-//            let cell = tableView.cellForRow(at: IndexPath(row: j, section: 0)) as! RecipeTableViewCell
-//            cell.myTextField.isEnabled = true
-//            
-//        }
+       
         print("Number of visible cells = \(tableView.visibleCells.count)")
         for j in 0...tableView.visibleCells.count - 1 {
         print("Count j = \(j)")
@@ -137,6 +130,8 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         let utterance = AVSpeechUtterance(string: step)
         print(utterance)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.rate = 0.4
+        utterance.pitchMultiplier = 1
         
    // print(utterance.voice?.language)
         
@@ -188,9 +183,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         recipeToLoad?.title = titleToSave
         recipeToLoad?.ingredients = ingredientsToSave
         recipeToLoad?.instructions = instructionsToSave
-        print(" \(recipeToLoad?.title)")
-        print("\(recipeToLoad?.ingredients)")
-        print("\(recipeToLoad?.instructions)")
+      
         BackendlessManager.sharedInstance.saveRecipe(recipeData: recipeToLoad!,
         completion: {
             self.saveBtn.isEnabled = true
@@ -234,6 +227,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         print("\(cell.recipeTextView.text)")
         cell.recipeTextView.isEditable = false
         cell.recipeTextView.delegate = self
+        
         return cell
     }
     
@@ -287,7 +281,19 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         textView.resignFirstResponder()
         return (true)
     }
-
+    func textViewDidEndEditing(_ textView: UITextView) {
+        
+        print("Number of rows = \(tableView.numberOfRows(inSection: 0))")
+        print("Number of visible rows = \(tableView.visibleCells.count)")
+               for j in 0...tableView.visibleCells.count -  1
+                {
+                    print(j)
+                   let row = tableView.indexPathsForVisibleRows
+                   let cell = tableView.cellForRow(at: IndexPath(row: j, section: 0)) as! RecipeTableViewCell
+                   myRecipeStructArray[row!.count].recipeName = cell.recipeTextView.text
+                    
+                }
+    }
     
 }
 

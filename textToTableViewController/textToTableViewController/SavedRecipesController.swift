@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     //MARK: Properties
     
@@ -21,6 +21,7 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
         BackendlessManager.sharedInstance.loadRecipes {recipesData in
         self.recipes += recipesData
             self.tableView.reloadData()}
+        searchBar.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,6 +68,8 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
     }
     
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     ///////
     // MARK: - Table view data source
     
@@ -98,6 +101,7 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
             if thumbnailUrl != "" {
             loadImageFromUrl(cell: cell, thumbnailUrl: thumbnailUrl)
             }
+            
             
         }
      
@@ -217,17 +221,35 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
     
     @IBAction func logout(_ sender: UIButton) {
         
-    BackendlessManager.sharedInstance.logoutUser(
-            completion: {
-            
-                self.performSegue(withIdentifier: "gotoLoginFromSavedRecipes", sender: sender)
-        },
-            
-            error: { message in
+        let alertController = UIAlertController(title: nil,
+                                                message: "Are you sure you want to log out?",
+                                                preferredStyle: .actionSheet)
+        let logOutApp = UIAlertAction(title: "Log Out", style: .default) { action in
+            BackendlessManager.sharedInstance.logoutUser(
+                completion: {
+                    
+                    self.performSegue(withIdentifier: "gotoLoginFromSavedRecipes", sender: sender)
+            },
                 
-                
-                Utility.showAlert(viewController: self, title: "Logout Error", message: message)
-        })
+                error: { message in
+                    
+                    
+                    Utility.showAlert(viewController: self, title: "Logout Error", message: message)
+            })
+            
+        }
+        
+        alertController.addAction(logOutApp)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+        }
+        
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true) {
+           
+        }
+    
     }
 
 }

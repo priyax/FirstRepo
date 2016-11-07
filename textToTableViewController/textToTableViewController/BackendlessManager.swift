@@ -54,12 +54,12 @@ class BackendlessManager {
                                               
             response: { (user: BackendlessUser?) -> Void in
             
-                print("User was registered: \(user?.objectId)")
+                
                 completion()
             },
           
             error: { (fault: Fault?) -> Void in
-                print("User failed to register: \(fault)")
+               
                 error((fault?.message)!)
             }
         )
@@ -70,12 +70,12 @@ class BackendlessManager {
         backendless.userService.login( email, password: password,
                                         
             response: { (user: BackendlessUser?) -> Void in
-                print("User logged in: \(user!.objectId)")
+                
                 completion()
             },
             
             error: { (fault: Fault?) -> Void in
-                print("User failed to login: \(fault)")
+               
                 error((fault?.message)!)
             })
      
@@ -89,18 +89,18 @@ class BackendlessManager {
             // If they are currently logged in - go ahead and log them out!
             
             backendless.userService.logout( { (user: Any!) -> Void in
-                    print("User logged out!")
+                
                     completion()
                 },
                                             
                 error: { (fault: Fault?) -> Void in
-                    print("User failed to log out: \(fault)")
+                    
                     error((fault?.message)!)
                 })
             
         } else {
             
-            print("User is already logged out!");
+           
             completion()
         }
     }
@@ -118,9 +118,6 @@ class BackendlessManager {
         dataStore?.find(dataQuery,
                          
              response: { (recipes: BackendlessCollection?) -> Void in
-                
-                print("Find attempt on all Meals has completed without error!")
-                print("Number of Meals found = \((recipes?.data.count)!)")
                 
                 var recipeData = [RecipeData]()
                 
@@ -151,7 +148,6 @@ class BackendlessManager {
                     
                     newRecipeData?.objectId = recipefromBE.objectId
                     
-                    print("Recipe Id: \(recipefromBE.objectId!), Title: \(recipefromBE.title), photoUrl: \(recipefromBE.thumbnailUrl!), recipeUrl \(recipefromBE.recipeUrl), recipeInstructions \(instructions)")
                 }
                 
                             // Whatever meals we found on the database - return them.
@@ -159,7 +155,7 @@ class BackendlessManager {
         },
                          
                          error: { (fault: Fault?) -> Void in
-                            print("Failed to find Meal: \(fault)")
+                           
         }
         )
     }
@@ -180,18 +176,18 @@ class BackendlessManager {
             recipeToSave.instructions = instructionsJSON.rawString(String.Encoding.utf8, options: [])}
        
         
-        print("\(recipeToSave.instructions)")
+        
         let dataStore = backendless.data.of(RecipeForBE.ofClass())
         if recipeToSave.objectId == nil {
            
            dataStore?.save(recipeToSave,
                                   response: {(result: Any!) -> Void in
                                     
-                                    print("Recipe has been saved")
+                                    
                                     completion()
                                     },
                                   error: { (fault: Fault?) -> Void in
-                                    print("Recipe failed to save\(fault)")
+                                  
                                     error()
                                     })
             
@@ -211,16 +207,16 @@ class BackendlessManager {
                     let foundRecipe = result as! RecipeForBE
                     self.backendless.data.save(foundRecipe,
                                    response: {(result: Any!) -> Void in
-                                    print("Recipe has been saved")
+                                    
                                     completion()
                                     },
                                    error: { (fault: Fault?) -> Void in
-                                    print("Recipe failed to save\(fault)")
+                                    
                                     error()
                                     })
                     },
           error: { (fault: Fault?) -> Void in
-            print("Failed to find Recipe: \(fault)")
+           
             error()
 
             })
@@ -230,7 +226,7 @@ class BackendlessManager {
     
     func removeRecipe(recipeToRemove: RecipeData, completion: @escaping () -> (), error: @escaping () -> ()) {
         
-        print("Remove Recipe: \(recipeToRemove.objectId!)")
+        
         
         let dataStore = backendless.persistenceService.of(RecipeForBE.ofClass())
         
@@ -238,12 +234,12 @@ class BackendlessManager {
                                 
                                 response: { (result: NSNumber?) -> Void in
                                     
-                                    print("One recipe has been removed: \(result)")
+                                   
                                     completion()
         },
                                 
                                 error: { (fault: Fault?) -> Void in
-                                    print("Failed to remove Meal: \(fault)")
+                                   
                                     error()
         }
         )
