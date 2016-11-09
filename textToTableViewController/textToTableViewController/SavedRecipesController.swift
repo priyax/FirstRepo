@@ -8,23 +8,31 @@
 
 import UIKit
 
-class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewDataSource {
 
     //MARK: Properties
     
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var welcomeLabel: UILabel!
+    
     var recipes = [RecipeData]()
-    var searchActive : Bool = false
-    var filteredRecipes = [RecipeData]()
+   
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        BackendlessManager.sharedInstance.loadRecipes {recipesData in
+        BackendlessManager.sharedInstance.loadRecipes { recipesData in
         self.recipes += recipesData
-            self.tableView.reloadData()}
-        searchBar.delegate = self
-    }
+            self.tableView.reloadData()
+            if self.recipes.count == 0
+            {
+            self.welcomeLabel.isHidden = false
+            } else {
+            self.welcomeLabel.isHidden = true
+            }
+        }
+            }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -70,7 +78,7 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
     }
     
     
-    @IBOutlet weak var searchBar: UISearchBar!
+   // @IBOutlet weak var searchBar: UISearchBar!
     
     ///////
     // MARK: - Table view data source
@@ -81,9 +89,7 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if(searchActive) {
-            return filteredRecipes.count
-        }
+        
         return recipes.count
     }
     
@@ -95,19 +101,7 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
         
          cell.recipePic.image = nil
         
-        if(searchActive){
-            cell.RecipeTitle.text = filteredRecipes[indexPath.row].title
-            // Fetches the appropriate recipe for the data source layout.
-            let recipe = filteredRecipes[(indexPath as NSIndexPath).row]
-            if let thumbnailUrl = recipe.thumbnailUrl {
-                if thumbnailUrl != "" {
-                    loadImageFromUrl(cell: cell, thumbnailUrl: thumbnailUrl)
-                }
-            }
-
-            
-        } else {
-            cell.RecipeTitle.text = recipes[indexPath.row].title
+         cell.RecipeTitle.text = recipes[indexPath.row].title
             // Fetches the appropriate recipe for the data source layout.
             let recipe = recipes[(indexPath as NSIndexPath).row]
             if let thumbnailUrl = recipe.thumbnailUrl {
@@ -116,11 +110,7 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
                 }
             }
 
-        }
-    
-       
-     
-        
+      
         return cell
     }
     
@@ -128,8 +118,7 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
-
-
+            
 
         // Find the Recipe Data in the data source that we wish to delete.
         let recipeToRemove = recipes[indexPath.row]
@@ -141,6 +130,13 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
             // It was removed from the database, now delete the row from the data source.
             self.recipes.remove(at: (indexPath as NSIndexPath).row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+           
+            if self.recipes.count == 0
+            {
+                self.welcomeLabel.isHidden = false
+            } else {
+                self.welcomeLabel.isHidden = true
+            }
         },
          
          error: {
@@ -189,7 +185,7 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
     
     func loadImageFromUrl(cell: SavedRecipesTableViewCell, thumbnailUrl: String)  {
     let url = URL(string: thumbnailUrl)
-        print("URL!!!!!\(url)")
+        
         let session = URLSession.shared
         let task = session.dataTask(with: url!, completionHandler: { (data,response,error) in
         if error == nil {
@@ -226,6 +222,7 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
                 let newIndexPath = IndexPath(row: recipes.count, section: 0)
                 recipes.append(recipe)
                 tableView.insertRows(at: [newIndexPath], with: .bottom)
+                self.welcomeLabel.isHidden = true
             }
             
         
@@ -235,38 +232,8 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
     }
     
     
-    //Search Bar
-    
+    //LogOut
    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchActive = true;
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchActive = false;
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchActive = false;
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchActive = false;
-    }
-
-    
-    func filterContentForSearchText(searchText: String, scope: String = "All") {
-        filteredRecipes = recipes.filter { recipe in
-            return (recipe.title?.lowercased().contains(searchText.lowercased()))!
-        }
-        if(filteredRecipes.count == 0){
-            searchActive = false;
-        } else {
-            searchActive = true;
-        }
-        tableView.reloadData()
-    }
-    
     
     @IBAction func logout(_ sender: UIButton) {
         

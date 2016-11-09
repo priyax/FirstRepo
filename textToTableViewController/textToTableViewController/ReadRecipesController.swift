@@ -263,7 +263,8 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let cell = tableView.cellForRow(at: indexPath)
-        cell?.contentView.backgroundColor = UIColor.gray
+        cell?.contentView.backgroundColor = UIColor.brown
+        
             }
     
     // Method gets called when the keyboard return key pressed

@@ -22,12 +22,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchImage" translatesAutoresizingMaskIntoConstraints="NO" id="Bij-Iq-0Gb">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="659"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Bij-Iq-0Gb" secondAttribute="bottom" constant="8" id="Ih7-Tl-5WO"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Bij-Iq-0Gb" secondAttribute="bottom" id="Ih7-Tl-5WO"/>
                             <constraint firstAttribute="trailing" secondItem="Bij-Iq-0Gb" secondAttribute="trailing" id="KP2-TR-I9P"/>
                             <constraint firstItem="Bij-Iq-0Gb" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="OrK-PZ-Pyc"/>
                             <constraint firstItem="Bij-Iq-0Gb" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="yd6-zW-Gc0"/>
