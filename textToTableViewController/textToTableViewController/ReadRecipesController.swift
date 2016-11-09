@@ -13,6 +13,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
 
     var recipeToLoad: RecipeData?
     
+    
     @IBOutlet weak var saveBtn: UIButton!
    
     struct myRecipeStruct {
@@ -26,7 +27,8 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         case instructions
     }
     var myRecipeStructArray = [myRecipeStruct]()
-    
+    var recipeArrayFromSelectedRow = [myRecipeStruct]()
+    var startReadingIndex = 0
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -88,7 +90,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         synthesizer.continueSpeaking()
         
         } else {
-            for recipeStruct in myRecipeStructArray {
+            for recipeStruct in myRecipeStructArray[startReadingIndex...myRecipeStructArray.count - 1 ] {
             print(recipeStruct.recipeName!)
         callSpeechSynthesizer(step: recipeStruct.recipeName!) //TODO how to make this an optional call
         }
@@ -107,7 +109,9 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func stopReading(_ sender: UIButton) {
         
-        synthesizer.stopSpeaking(at: AVSpeechBoundary.word)     }
+        synthesizer.stopSpeaking(at: AVSpeechBoundary.word)
+        startReadingIndex = 0
+    }
     
     
     @IBAction func editRecipe(_ sender: UIButton) {
@@ -249,16 +253,21 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         
         let cell = tableView.cellForRow(at: indexPath)
-        cell?.contentView.backgroundColor = UIColor.red
-    }
-    
-    // From UITableViewDelegate protocol.
-    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
         
-        let cell = tableView.cellForRow(at: indexPath)
-        cell?.contentView.backgroundColor = UIColor.clear
+        cell?.contentView.backgroundColor = UIColor.red
+        //Add
+        if editBtn.isEnabled == true {
+            
+            startReadingIndex = indexPath.row
+           // for i in myRecipeStructArray[indexPath.row...myRecipeStructArray.count - 1 ] {
+            
+          //  recipeArrayFromSelectedRow.append(i)
+          //  }
+        
+        }
     }
     
+        
     // From UITableViewDelegate protocol.
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -272,6 +281,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         if(text == "\n")
         {
             view.endEditing(true)
+            
             return false
         }
         else
@@ -301,6 +311,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
             
             if let cell = cell as? RecipeTableViewCell {
                 myRecipeStructArray[cell.index!].recipeName = cell.recipeTextView.text
+                cell.recipeTextView.isEditable = false
             }
         }
         
