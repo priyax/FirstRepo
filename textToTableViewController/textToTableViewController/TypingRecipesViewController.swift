@@ -21,7 +21,12 @@ class TypingRecipesViewController: UIViewController, UITextViewDelegate, UITextF
         recipeIngredients.delegate = self
         recipeInstructions.delegate = self
         recipeTitle.delegate = self
-        // Do any additional setup after loading the view.
+        // Add placeholder texts to the text fields
+        recipeIngredients.text = "Copy + paste list of ingredients here"
+        recipeInstructions.text = "Copy + paste list of instructions here"
+        recipeIngredients.textColor = UIColor.lightGray
+        recipeInstructions.textColor = UIColor.lightGray
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -95,4 +100,28 @@ class TypingRecipesViewController: UIViewController, UITextViewDelegate, UITextF
             return true
         }
     }
+    
+    // Remove placeholder text when text view begins editing
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if recipeIngredients.textColor == UIColor.lightGray {
+            recipeIngredients.text = nil
+            recipeIngredients.textColor = UIColor.black
+        } else if recipeInstructions.textColor == UIColor.lightGray {
+            recipeInstructions.text = nil
+            recipeInstructions.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if recipeIngredients.text.isEmpty {
+            recipeIngredients.text = "Copy + paste list of ingredients here"
+            recipeIngredients.textColor = UIColor.lightGray
+        } else if recipeInstructions.text.isEmpty {
+            recipeInstructions.text = "Copy + paste list of instructions here"
+            recipeInstructions.textColor = UIColor.lightGray
+        
+        }
+    }
+    
+    
 }

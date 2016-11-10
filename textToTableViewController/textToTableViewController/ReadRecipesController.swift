@@ -29,6 +29,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
     var myRecipeStructArray = [myRecipeStruct]()
     var recipeArrayFromSelectedRow = [myRecipeStruct]()
     var startReadingIndex = 0
+    var rowIsSelected = false
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -85,7 +86,27 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
     
     //Action Buttons
     @IBAction func startReading(_ sender: UIButton) {
-        if synthesizer.isPaused {
+        if synthesizer.isPaused == true && rowIsSelected == false {
+            // start reading after being paused
+        synthesizer.continueSpeaking()
+        }
+        else if rowIsSelected == true {
+        // start reading from selected row whether synthesiser was paused or not
+            for recipeStruct in myRecipeStructArray[startReadingIndex...myRecipeStructArray.count - 1 ] {
+                callSpeechSynthesizer(step: recipeStruct.recipeName!)
+                rowIsSelected = false
+            }
+        } else {
+        //start reading from beginning
+        
+            for recipeStruct in myRecipeStructArray {
+                callSpeechSynthesizer(step: recipeStruct.recipeName!)
+            }
+        
+        }
+            
+        
+       /* if synthesizer.isPaused {
         
         synthesizer.continueSpeaking()
         
@@ -94,7 +115,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
             print(recipeStruct.recipeName!)
         callSpeechSynthesizer(step: recipeStruct.recipeName!) //TODO how to make this an optional call
         }
-        }
+        } */
     }
 
     @IBAction func pauseReading(_ sender: UIButton) {
@@ -111,6 +132,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         
         synthesizer.stopSpeaking(at: AVSpeechBoundary.word)
         startReadingIndex = 0
+        rowIsSelected = false
     }
     
     
@@ -122,7 +144,8 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         for j in 0...tableView.visibleCells.count - 1 {
         print("Count j = \(j)")
         let cell = tableView.visibleCells[j] as! RecipeTableViewCell
-            cell.recipeTextView.isEditable = true
+            cell.recipeTextView.isUserInteractionEnabled = true
+           // cell.recipeTextView.isEditable = true
         }
     
     }
@@ -237,7 +260,8 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         cell.recipeTextView.text = myRecipeStructArray[index].recipeName
         print("Row Number = \((indexPath as IndexPath).row)")
         print("\(cell.recipeTextView.text)")
-        cell.recipeTextView.isEditable = false
+        //cell.recipeTextView.isEditable = false
+        cell.recipeTextView.isUserInteractionEnabled = false
         cell.recipeTextView.delegate = self
         
         return cell
@@ -252,19 +276,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
     // From UITableViewDelegate protocol.
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         
-        let cell = tableView.cellForRow(at: indexPath)
         
-        cell?.contentView.backgroundColor = UIColor.red
-        //Add
-        if editBtn.isEnabled == true {
-            
-            startReadingIndex = indexPath.row
-           // for i in myRecipeStructArray[indexPath.row...myRecipeStructArray.count - 1 ] {
-            
-          //  recipeArrayFromSelectedRow.append(i)
-          //  }
-        
-        }
     }
     
         
@@ -273,6 +285,16 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         
         let cell = tableView.cellForRow(at: indexPath)
         cell?.contentView.backgroundColor = UIColor.brown
+        
+        //change start of reading
+        if editBtn.isEnabled == true {
+            
+            synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
+            startReadingIndex = indexPath.row
+            print("start reading index = \(startReadingIndex)")
+            rowIsSelected = true
+            
+        }
         
             }
     
@@ -311,7 +333,8 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
             
             if let cell = cell as? RecipeTableViewCell {
                 myRecipeStructArray[cell.index!].recipeName = cell.recipeTextView.text
-                cell.recipeTextView.isEditable = false
+             //   cell.recipeTextView.isEditable = false
+                cell.recipeTextView.isUserInteractionEnabled = false
             }
         }
         
