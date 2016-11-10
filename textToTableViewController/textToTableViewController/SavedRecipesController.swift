@@ -54,26 +54,24 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
         
         let extractFromWeb = UIAlertAction(title: "Recipe from Web", style: .default) { action in
             self.performSegue(withIdentifier: "gotoExtractRecipe", sender: self)
-            print("Save was selected!")
+            
         }
         
         alertController.addAction(extractFromWeb)
         
         let manualEntry = UIAlertAction(title: "Recipe By Typing", style: .default) { action in
             self.performSegue(withIdentifier: "gotoTypingRecipe", sender: self)
-            print("Typing was selected!")
-        }
+                   }
         
         alertController.addAction(manualEntry)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
-            print("Cancel was selected!")
-        }
+                   }
         
         alertController.addAction(cancelAction)
         
         self.present(alertController, animated: true) {
-            print("Show the Action Sheet!")
+            
         }
     }
     
@@ -173,7 +171,7 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
                 let indexPath = tableView.indexPath(for: selectedRecipesCell)!
                 let selectedRecipe = recipes[(indexPath as NSIndexPath).row]
                 readRecipesTableViewController.recipeToLoad = selectedRecipe
-                print("Its coming here!!! \(selectedRecipe.title)")
+                
             }
             
         }

@@ -99,7 +99,7 @@ class ExtractRecipe: UIViewController {
         
        let recipeUrl = webView.request?.url
         //let recipeUrl = URL(string: "http://www.joyofbaking.com/brownies.html")
-        print("REcipe url \(recipeUrl)")
+       // print("REcipe url \(recipeUrl)")
          let parameters: Parameters = [
          "forceExtraction": "false",
          "url": recipeUrl!
@@ -108,7 +108,7 @@ class ExtractRecipe: UIViewController {
          let headers: HTTPHeaders = [
          "X-Mashape-Key": "pzvlLbDM00mshRETcOj2MRdfKLJzp19j3qcjsniUjlvbaDIiaw"
          ]
-         print("Parameters \(parameters)")
+     //    print("Parameters \(parameters)")
          Alamofire.request("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract", parameters: parameters, encoding: URLEncoding.default, headers: headers).responseString { response in
          
          // The GET request for the JSON data has returned.
@@ -189,7 +189,7 @@ class ExtractRecipe: UIViewController {
         
        if segue.identifier == "gotoReadRecipes" {
             
-            print("Preparing to go to read Recipes view!")
+        //    print("Preparing to go to read Recipes view!")
             
             // If we need to, modify the next UIViewController.
             let nextVC = segue.destination as! ReadRecipesController
