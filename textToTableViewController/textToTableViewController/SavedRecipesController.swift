@@ -70,9 +70,14 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
         
         alertController.addAction(cancelAction)
         
-        self.present(alertController, animated: true) {
+        //self.present(alertController, animated: true) {
             
-        }
+       // }
+        alertController.popoverPresentationController?.sourceView = self.view
+        alertController.popoverPresentationController?.sourceRect = sender.bounds
+        
+        self.present(alertController, animated: true, completion: nil)
+        
     }
     
     
@@ -260,9 +265,14 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
         
         alertController.addAction(cancelAction)
         
-        self.present(alertController, animated: true) {
+        //self.present(alertController, animated: true) {
            
-        }
+       // }
+        alertController.popoverPresentationController?.sourceView = self.view
+        alertController.popoverPresentationController?.sourceRect = sender.bounds
+        
+        self.present(alertController, animated: true, completion: nil)
+
     
     }
 

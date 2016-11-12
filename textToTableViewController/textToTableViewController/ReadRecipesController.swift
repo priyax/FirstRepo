@@ -140,6 +140,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     @IBAction func backBtn(_ sender: UIButton) {
+        synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
         navigationController!.popViewController(animated: true)
     }
     
@@ -149,7 +150,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         let utterance = AVSpeechUtterance(string: step)
   //      print(utterance)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        utterance.rate = 0.4
+        utterance.rate = 0.45
         utterance.pitchMultiplier = 1
         
    // print(utterance.voice?.language)
@@ -208,6 +209,7 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         BackendlessManager.sharedInstance.saveRecipe(recipeData: recipeToLoad!,
         completion: {
             self.saveBtn.isEnabled = true
+            self.synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
           //  print("Segue to Table of Saved Recipes after data is saved in BE")
              self.performSegue(withIdentifier: "unwindToSavedRecipes", sender: self)
             
