@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "savedRecipesController")
         }
+        UIApplication.shared.isIdleTimerDisabled = true
         
         return true
 
