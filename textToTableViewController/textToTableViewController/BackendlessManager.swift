@@ -42,7 +42,37 @@ class BackendlessManager {
         }
     }
 
+    func loginViaFacebook(completion: @escaping () -> (), error: @escaping (String) -> ()) {
+      
+      backendless.userService.easyLogin(withFacebookFieldsMapping: ["email":"email"], permissions: ["email"],
+                                        
+                                        response: {(result : NSNumber?) -> () in
+                                          print ("Result: \(result)")
+                            
+                                          completion()
+                                    },
+                                        
+                                        error: { (fault : Fault?) -> () in
+                                          
+                                          error((fault?.message)!)
+                                    })
+    }
     
+    func loginViaTwitter(completion: @escaping () -> (), error: @escaping (String) -> ()) {
+      
+      backendless.userService.easyLogin(withTwitterFieldsMapping: ["email":"email"],
+                                        
+                                        response: {(result : NSNumber?) -> () in
+                                          print ("Result: \(result)")
+                                          completion()
+                                    },
+                                        
+                                        error: { (fault : Fault?) -> () in
+                                         
+                                          error((fault?.message)!)
+                                    })
+    }
+
     
     func registerUser(email: String, password: String, completion: @escaping () -> (), error: @escaping (String) -> ()) {
     
@@ -104,8 +134,20 @@ class BackendlessManager {
             completion()
         }
     }
+  
+  func handleOpen(open url: URL, completion: @escaping () -> (), error: @escaping () -> ()) {
     
+   
+    let user = backendless.userService.handleOpen(url)
     
+    if user != nil {
+      completion()
+    } else {
+      error()
+    }
+  }
+  
+  
     func loadRecipes(completion: @escaping ([RecipeData]) -> ()) {
         
         let dataStore = backendless.persistenceService.of(RecipeForBE.ofClass())

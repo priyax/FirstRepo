@@ -62,7 +62,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+  
+  //facebook and twitter login
+  @IBAction func loginViaFacebook(_ sender: UIButton) {
+    BackendlessManager.sharedInstance.loginViaFacebook(completion: {
+      
+    }, error: { message in
+      Utility.showAlert(viewController: self, title: "Login Error", message: message)
+     
+    })
+  }
+  
+  @IBAction func loginViaTwitter(_ sender: UIButton) {
+    BackendlessManager.sharedInstance.loginViaTwitter(completion: {
+      
+    }, error: { message in
+      Utility.showAlert(viewController: self, title: "Login Error", message: message)
+      
+    })
+  }
+  
     //Hide Keyboard when user touches outside keyboard
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)

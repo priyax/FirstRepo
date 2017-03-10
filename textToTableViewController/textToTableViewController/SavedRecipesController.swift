@@ -146,7 +146,7 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
             
             // It was NOT removed - tell the user and DON'T delete the row from the data source.
             let alertController = UIAlertController(title: "Remove Failed",
-                                                    message: "Oops! We couldn't remove your Meal at this time.",
+                                                    message: "Oops! We couldn't remove your Recipe at this time.",
                                                     preferredStyle: .alert)
             
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)

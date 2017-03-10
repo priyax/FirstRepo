@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BWo-vn-jpu">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BWo-vn-jpu">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -98,6 +98,22 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="XZt-y6-xuM" userLabel="bg">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a7W-Rl-86m" userLabel="fb_login">
+                                <rect key="frame" x="60.5" y="293.5" width="200" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="KhO-qm-hJq"/>
+                                    <constraint firstAttribute="width" constant="200" id="h4z-1H-Tdh"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Login via Facebook" image="fb_login" backgroundImage="loginBtnBg">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginViaFacebook:" destination="Q30-lx-iP1" eventType="touchUpInside" id="JKh-sK-bNQ"/>
+                                </connections>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="input_box" translatesAutoresizingMaskIntoConstraints="NO" id="amc-ul-IFe">
                                 <rect key="frame" x="29" y="61.5" width="262" height="212"/>
                                 <constraints>
@@ -153,6 +169,22 @@
                                     <action selector="cancelBtn:" destination="Q30-lx-iP1" eventType="touchUpInside" id="dXg-9c-Ddx"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9CG-Tk-czd" userLabel="twitter_login">
+                                <rect key="frame" x="60" y="343.5" width="200" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="5XY-ZC-zxA"/>
+                                    <constraint firstAttribute="width" constant="200" id="c03-oP-qGQ"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Login via Twitter" image="twitter_login" backgroundImage="loginBtnBg">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginViaTwitter:" destination="Q30-lx-iP1" eventType="touchUpInside" id="qnr-JM-w91"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.41892750433225845" blue="0.37129930291308499" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -161,11 +193,15 @@
                             <constraint firstItem="EWf-rQ-QQZ" firstAttribute="centerX" secondItem="LQe-lm-W52" secondAttribute="centerX" constant="-70" id="6Pr-3L-brF"/>
                             <constraint firstItem="XZt-y6-xuM" firstAttribute="top" secondItem="LQe-lm-W52" secondAttribute="top" id="6cb-aZ-Gow"/>
                             <constraint firstItem="EWf-rQ-QQZ" firstAttribute="top" secondItem="2V3-qc-aWI" secondAttribute="bottom" constant="30" id="8vz-Q5-rP0"/>
+                            <constraint firstItem="a7W-Rl-86m" firstAttribute="top" secondItem="amc-ul-IFe" secondAttribute="bottom" constant="20" id="Byd-MD-bVV"/>
+                            <constraint firstItem="9CG-Tk-czd" firstAttribute="centerX" secondItem="LQe-lm-W52" secondAttribute="centerX" id="F0E-Ew-VZf"/>
                             <constraint firstItem="2V3-qc-aWI" firstAttribute="centerX" secondItem="LQe-lm-W52" secondAttribute="centerX" id="GLm-3N-Mvo"/>
                             <constraint firstItem="XZt-y6-xuM" firstAttribute="leading" secondItem="LQe-lm-W52" secondAttribute="leading" id="RP5-oC-kTh"/>
                             <constraint firstItem="vQK-67-NxS" firstAttribute="centerX" secondItem="LQe-lm-W52" secondAttribute="centerX" constant="70" id="UtM-iX-o2B"/>
+                            <constraint firstItem="9CG-Tk-czd" firstAttribute="top" secondItem="a7W-Rl-86m" secondAttribute="bottom" constant="10" id="V87-zS-7EB"/>
                             <constraint firstItem="amc-ul-IFe" firstAttribute="centerX" secondItem="LQe-lm-W52" secondAttribute="centerX" id="YhN-eN-rgQ"/>
                             <constraint firstItem="vQK-67-NxS" firstAttribute="centerY" secondItem="LQe-lm-W52" secondAttribute="centerY" id="Z30-hN-GpR"/>
+                            <constraint firstItem="a7W-Rl-86m" firstAttribute="centerX" secondItem="LQe-lm-W52" secondAttribute="centerX" id="aEU-iq-SBr"/>
                             <constraint firstItem="amc-ul-IFe" firstAttribute="centerY" secondItem="LQe-lm-W52" secondAttribute="centerY" constant="-72.5" id="ekT-E1-Pvv"/>
                             <constraint firstAttribute="trailing" secondItem="XZt-y6-xuM" secondAttribute="trailing" id="ffe-YZ-SQL"/>
                             <constraint firstItem="EWf-rQ-QQZ" firstAttribute="centerY" secondItem="LQe-lm-W52" secondAttribute="centerY" id="hhW-AG-i1O"/>
@@ -181,7 +217,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MAx-N7-OgH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-959.20000000000005" y="122.78860569715144"/>
+            <point key="canvasLocation" x="-960" y="122.5"/>
         </scene>
         <!--My Recipes-->
         <scene sceneID="Ak4-es-vQa">
@@ -851,6 +887,7 @@
         <image name="chevron_right" width="25" height="19"/>
         <image name="download" width="52" height="19"/>
         <image name="editBtn" width="25" height="25"/>
+        <image name="fb_login" width="200" height="40"/>
         <image name="input_box" width="315" height="180"/>
         <image name="loginBtnBg" width="248" height="78"/>
         <image name="logout" width="25" height="23"/>
@@ -860,9 +897,10 @@
         <image name="saveBtn" width="25" height="25"/>
         <image name="stopBtn" width="37" height="37"/>
         <image name="textFieldBg" width="248" height="48"/>
+        <image name="twitter_login" width="200" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="LlY-JL-EwC"/>
-        <segue reference="Rk5-dv-wPM"/>
+        <segue reference="EAZ-o3-BtO"/>
     </inferredMetricsTieBreakers>
 </document>
