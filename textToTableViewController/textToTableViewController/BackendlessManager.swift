@@ -47,7 +47,7 @@ class BackendlessManager {
       backendless.userService.easyLogin(withFacebookFieldsMapping: ["email":"email"], permissions: ["email"],
                                         
                                         response: {(result : NSNumber?) -> () in
-                                          print ("Result: \(result)")
+                                          print ("Result: \(String(describing: result))")
                             
                                           completion()
                                     },
@@ -63,7 +63,7 @@ class BackendlessManager {
       backendless.userService.easyLogin(withTwitterFieldsMapping: ["email":"email"],
                                         
                                         response: {(result : NSNumber?) -> () in
-                                          print ("Result: \(result)")
+                                          print ("Result: \(String(describing: result))")
                                           completion()
                                     },
                                         

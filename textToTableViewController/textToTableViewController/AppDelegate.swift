@@ -34,9 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
  func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
     
-   // do something, call some ViewController method, for example
-    
-    BackendlessManager.sharedInstance.handleOpen( open: url,
+        BackendlessManager.sharedInstance.handleOpen( open: url,
                                      
                                      completion: {
                                       // If the user is logged in - skip the login view and go straight to the tab bar controller!

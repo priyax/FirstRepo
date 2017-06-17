@@ -172,8 +172,9 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     @IBAction func saveBtn(_ sender: UIButton) {
-        
-        saveBtn.isEnabled = false
+      
+      
+      
         var titleToSave = String()
         var ingredientsToSave = [String]()
         var instructionsToSave = [String]()
@@ -206,27 +207,47 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         recipeToLoad?.ingredients = ingredientsToSave
         recipeToLoad?.instructions = instructionsToSave
       
+      
+      if (BackendlessManager.sharedInstance.isUserLoggedIn()) {
+        saveBtn.isEnabled = false
         BackendlessManager.sharedInstance.saveRecipe(recipeData: recipeToLoad!,
-        completion: {
-            self.saveBtn.isEnabled = true
-            self.synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
-          //  print("Segue to Table of Saved Recipes after data is saved in BE")
-             self.performSegue(withIdentifier: "unwindToSavedRecipes", sender: self)
-            
-            }, error: {
-                // It was NOT saved to the database! - tell the user and DON'T call performSegue.
-                let alertController = UIAlertController(title: "Save Error",
-                                                        message: "Oops! We couldn't save your Recipe at this time.",
-                                                        preferredStyle: .alert)
-                
-                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alertController.addAction(okAction)
-                
-                self.present(alertController, animated: true, completion: nil)
-                
-                self.saveBtn.isEnabled = true
-
+                                                     completion: {
+                                                      self.saveBtn.isEnabled = true
+                                                      self.synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
+                                                      //  print("Segue to Table of Saved Recipes after data is saved in BE")
+                                                      self.performSegue(withIdentifier: "unwindToSavedRecipes", sender: self)
+                                                      
+        }, error: {
+          // It was NOT saved to the database! - tell the user and DON'T call performSegue.
+          let alertController = UIAlertController(title: "Save Error",
+                                                  message: "Oops! We couldn't save your Recipe at this time.",
+                                                  preferredStyle: .alert)
+          
+          let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+          alertController.addAction(okAction)
+          
+          self.present(alertController, animated: true, completion: nil)
+          
+          self.saveBtn.isEnabled = true
+          
         })
+      } else {
+      // If not logged in then user is prompted to register or sign in
+        //TODO Create an alert that unwinds to register/log in page with recipe to save
+      
+        let alertController = UIAlertController(title: "Sign Up/ Register to save this recipe", message: "", preferredStyle: .actionSheet)
+        let okAction = UIAlertAction(title: "OK", style: .default,
+                                     handler:  {action in  self.performSegue(withIdentifier: "unwindToWelcomeViewController", sender: self)})
+        
+        
+        alertController.addAction(okAction)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+      
+        self.present(alertController, animated: true, completion: nil)
+      }
+      
     }
     // From UITableViewDataSource protocol.
     func numberOfSections(in tableView: UITableView) -> Int {

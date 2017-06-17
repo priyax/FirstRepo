@@ -16,22 +16,36 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var welcomeLabel: UILabel!
     
+    @IBOutlet weak var notLoggedInLabel: UILabel!
+  
+    @IBOutlet weak var logOutBtn: UIButton!
+  
     var recipes = [RecipeData]()
    
-    
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
+      if (BackendlessManager.sharedInstance.isUserLoggedIn()){
+        self.notLoggedInLabel.isHidden = true
+        self.logOutBtn.isEnabled = true
+        
         BackendlessManager.sharedInstance.loadRecipes { recipesData in
-        self.recipes += recipesData
-            self.tableView.reloadData()
-            if self.recipes.count == 0
-            {
+          self.recipes += recipesData
+          self.tableView.reloadData()
+          if self.recipes.count == 0
+          {
             self.welcomeLabel.isHidden = false
-            } else {
+          } else {
             self.welcomeLabel.isHidden = true
-            }
+          }
         }
+      }
+      else {
+          self.notLoggedInLabel.isHidden = false
+          self.welcomeLabel.isHidden = true
+          self.logOutBtn.isEnabled = false
+      }
+      
             }
     
     override func didReceiveMemoryWarning() {
@@ -203,7 +217,7 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
             { print("NSData Error \(error)")
             }
             
-        } else { print("NSURLSession error: \(error)")
+        } else { print("NSURLSession error: \(String(describing: error))")
         }
          })
         task.resume()
