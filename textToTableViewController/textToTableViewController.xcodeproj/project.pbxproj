@@ -23,7 +23,6 @@
 		015F25F71DA2CFBB006C6ED5 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F25F61DA2CFBB006C6ED5 /* RecipeTableViewCell.swift */; };
 		015F25FA1DA2E320006C6ED5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 015F25F91DA2E320006C6ED5 /* AVFoundation.framework */; };
 		015F25FC1DA2E332006C6ED5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 015F25FB1DA2E332006C6ED5 /* AudioToolbox.framework */; };
-		017B4FB31EE0738A00B99BCA /* ArchiveRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017B4FB21EE0738A00B99BCA /* ArchiveRecipe.swift */; };
 		0196EA9F1DB1317F001EBE25 /* RecipeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0196EA9E1DB1317F001EBE25 /* RecipeData.swift */; };
 		0196EAA31DB141F7001EBE25 /* TypingRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0196EAA21DB141F7001EBE25 /* TypingRecipesViewController.swift */; };
 		01C844EE1DBE945D009D0A52 /* SavedRecipesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C844ED1DBE945D009D0A52 /* SavedRecipesTableViewCell.swift */; };
@@ -49,7 +48,6 @@
 		015F25F61DA2CFBB006C6ED5 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		015F25F91DA2E320006C6ED5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		015F25FB1DA2E332006C6ED5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		017B4FB21EE0738A00B99BCA /* ArchiveRecipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveRecipe.swift; sourceTree = "<group>"; };
 		0196EA9E1DB1317F001EBE25 /* RecipeData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeData.swift; sourceTree = "<group>"; };
 		0196EAA21DB141F7001EBE25 /* TypingRecipesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypingRecipesViewController.swift; sourceTree = "<group>"; };
 		01C844ED1DBE945D009D0A52 /* SavedRecipesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedRecipesTableViewCell.swift; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 				015F25EB1DA2C0D4006C6ED5 /* Assets.xcassets */,
 				015F25ED1DA2C0D4006C6ED5 /* LaunchScreen.storyboard */,
 				015F25F01DA2C0D4006C6ED5 /* Info.plist */,
-				017B4FB21EE0738A00B99BCA /* ArchiveRecipe.swift */,
 			);
 			path = textToTableViewController;
 			sourceTree = "<group>";
@@ -268,7 +265,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				014E95AC1DA81D9400874354 /* Utility.swift in Sources */,
-				017B4FB31EE0738A00B99BCA /* ArchiveRecipe.swift in Sources */,
 				014E95A01DA6B0AE00874354 /* WelcomeViewController.swift in Sources */,
 				014E95A81DA6E91600874354 /* SavedRecipesController.swift in Sources */,
 				015F25E71DA2C0D4006C6ED5 /* ReadRecipesController.swift in Sources */,

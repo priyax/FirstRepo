@@ -233,11 +233,13 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
         })
       } else {
       // If not logged in then user is prompted to register or sign in
-        //TODO Create an alert that unwinds to register/log in page with recipe to save
+        // Create an alert that unwinds to register/log in page with recipe to save
       
-        let alertController = UIAlertController(title: "Sign Up/ Register to save this recipe", message: "", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: "Sign In to save this recipe", message: "Do you want to continue to save this recipe?", preferredStyle: .actionSheet)
         let okAction = UIAlertAction(title: "OK", style: .default,
-                                     handler:  {action in  self.performSegue(withIdentifier: "unwindToWelcomeViewController", sender: self)})
+                                     handler:  {action in
+                                      self.saveRecipeToArchiver()
+                                      self.performSegue(withIdentifier: "unwindToWelcomeViewController", sender: self)})
         
         
         alertController.addAction(okAction)
@@ -249,6 +251,20 @@ class ReadRecipesController: UIViewController, UITableViewDelegate, UITableViewD
       }
       
     }
+  
+  // Save to NSKeyed Archiver
+  
+  func saveRecipeToArchiver() {
+    if let recipeToLoad = recipeToLoad {
+    let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(recipeToLoad, toFile: RecipeData.ArchiverUrl.path)
+      if !isSuccessfulSave {
+        print("Failed to archive recipe")
+      }
+      else {print("Saved recipe to archive")}
+    }
+    
+    
+  }
     // From UITableViewDataSource protocol.
     func numberOfSections(in tableView: UITableView) -> Int {
         

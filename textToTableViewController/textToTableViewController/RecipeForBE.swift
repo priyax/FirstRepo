@@ -9,13 +9,13 @@
 
 import UIKit
 class RecipeForBE: NSObject {
+  
     var objectId: String?
     var title :String?
     var ingredients :String?
     var instructions :String?
     var recipeUrl : String?
     var thumbnailUrl :String?
-    
-        
+  
 }
 

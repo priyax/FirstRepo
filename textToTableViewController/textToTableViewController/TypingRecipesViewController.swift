@@ -57,15 +57,15 @@ class TypingRecipesViewController: UIViewController, UITextViewDelegate, UITextF
         
         if segue.identifier == "gotoReadRecipesFromTyping" {
             
-            print("Preparing to go to read Recipes view after typing!")
+          //        print("Preparing to go to read Recipes view after typing!")
             let title = recipeTitle.text
             let instructions = recipeInstructions.text.components(separatedBy: ".")
             let ingredients = recipeIngredients.text.components(separatedBy: NSCharacterSet.newlines)
             recipeEntered = RecipeData(title: title, ingredients: ingredients, instructions: instructions, recipeUrl: nil, thumbnailUrl: nil)
             
-            print("title: \(recipeEntered?.title)")
-            print("instructions: \(recipeEntered?.instructions)")
-            print("instructions: \(recipeEntered?.ingredients)")
+          //            print("title: \(recipeEntered?.title)")
+          //           print("instructions: \(recipeEntered?.instructions)")
+          //           print("instructions: \(recipeEntered?.ingredients)")
 
             
             // If we need to, modify the next UIViewController.

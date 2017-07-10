@@ -33,7 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
   
  func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-    
+  
+  //when user logs in using Facebook or Twitter
         BackendlessManager.sharedInstance.handleOpen( open: url,
                                      
                                      completion: {
@@ -42,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                        self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "savedRecipesController")
                                     },
                                      error: {})
-    
+  
     return true
   }
 

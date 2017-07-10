@@ -14,7 +14,11 @@ class ExtractRecipe: UIViewController {
     
     var recipeData: RecipeData?
     
-   // var recipe :recipeData
+    @IBOutlet weak var selectRecipe: UIButton!
+  
+    @IBOutlet weak var webView: UIWebView!
+  
+  
 
     @IBAction func backBtn(_ sender: UIBarButtonItem) {
          _ = self.navigationController?.popViewController(animated: true)
@@ -24,8 +28,10 @@ class ExtractRecipe: UIViewController {
         let requestObj = URLRequest(url: url!);
         webView.loadRequest(requestObj);
     }
-    @IBOutlet weak var webView: UIWebView!
-    override func viewDidLoad() {
+  
+  
+  
+  override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -36,7 +42,7 @@ class ExtractRecipe: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.selectRecipe.isEnabled = true
         // This sets the text in the middle of the Nav Bar for this View Controllers.
         self.navigationItem.title = "Search For Recipe"
         
@@ -93,7 +99,8 @@ class ExtractRecipe: UIViewController {
    
     
     @IBAction func selectRecipe(_ sender: UIButton) {
-    
+      
+        selectRecipe.isEnabled = false
         // Below is an example of how to pass URL parameters and set a HTTP header
         // for your Alamofire GET request:
         
