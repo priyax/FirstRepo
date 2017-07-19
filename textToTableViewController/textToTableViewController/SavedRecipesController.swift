@@ -38,22 +38,31 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
       
       if let archivedRecipe = NSKeyedUnarchiver.unarchiveObject(withFile: RecipeData.ArchiverUrl.path) as? RecipeData {
         BackendlessManager.sharedInstance.saveRecipe(recipeData: archivedRecipe,
-                                                     completion: { BackendlessManager.sharedInstance.loadRecipes {recipesData in
-                                                      self.recipes += recipesData
-                                                      self.tableView.reloadData()
-                                                      if self.recipes.count == 0
-                                                      {
-                                                        self.welcomeLabel.isHidden = false
-                                                      } else {
-                                                        self.welcomeLabel.isHidden = true
-                                                      } }}, error: {
-                                                        
-                                                        let alertController = UIAlertController(title: "Save Error",
-                                                                                                message: "Oops! We couldn't save your recipe at this time.",
-                                                                                                preferredStyle: .alert)
-                                                        
-                                                        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                                                        alertController.addAction(okAction) })
+                                                     completion: {
+                                                      //delete archived data
+                                                      do {
+                                                        try FileManager().removeItem(atPath: RecipeData.ArchiverUrl.path) }
+                                                      catch {
+                                                        print("No recipe stored in archiver")
+                                                      }
+                                                      
+                                                      //load data that's in BE, including presaved recipes
+                                                      BackendlessManager.sharedInstance.loadRecipes {recipesData in
+                                                        self.recipes += recipesData
+                                                        self.tableView.reloadData()
+                                                        if self.recipes.count == 0
+                                                        {
+                                                          self.welcomeLabel.isHidden = false
+                                                        } else {
+                                                          self.welcomeLabel.isHidden = true
+                                                        } }}, error: {
+                                                          
+                                                          let alertController = UIAlertController(title: "Save Error",
+                                                                                                  message: "Oops! We couldn't save your recipe at this time.",
+                                                                                                  preferredStyle: .alert)
+                                                          
+                                                          let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                                                          alertController.addAction(okAction) })
         
         
       } else {
@@ -228,9 +237,6 @@ class SavedRecipesController: UIViewController,UITableViewDelegate, UITableViewD
     }
   }
   
-  
-  
-  ///////////
   
   func loadImageFromUrl(cell: SavedRecipesTableViewCell, thumbnailUrl: String)  {
     let url = URL(string: thumbnailUrl)

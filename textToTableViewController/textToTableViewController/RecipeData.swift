@@ -53,8 +53,7 @@ class RecipeData: NSObject, NSCoding {
   required convenience init?(coder aDecoder: NSCoder) {
     
     let title = aDecoder.decodeObject(forKey: PropertyKey.titleKey) as? String
-    let ingredients = aDecoder.decodeObject(forKey: PropertyKey.ingredientsKey)
- as? [String]
+    let ingredients = aDecoder.decodeObject(forKey: PropertyKey.ingredientsKey) as? [String]
      let instructions = aDecoder.decodeObject(forKey: PropertyKey.instructionsKey) as? [String]
       let recipeUrl = aDecoder.decodeObject(forKey: PropertyKey.recipeUrlKey) as? String
       let thumbnailUrl = aDecoder.decodeObject(forKey: PropertyKey.thumbnailUrlKey) as? String
